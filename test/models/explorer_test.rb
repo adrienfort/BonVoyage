@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ExplorerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "creating an Explorer" do
+    assert true
+  end
 end

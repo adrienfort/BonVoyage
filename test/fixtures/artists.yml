@@ -1,0 +1,5 @@
+artist_without_name:
+  email: "artist_without_name@gmail.com"
+
+artist_wrong_email:
+  name: "name_artist_wrong_email"
