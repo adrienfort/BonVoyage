@@ -1,5 +1,11 @@
-artist_without_name:
-  email: "artist_without_name@gmail.com"
+# DO NOT USE THIS
+# EMAILS  : booba@gmail.com / a@a.com     / b@b.com
+# NAME    : Booba           / Booba bis   /
 
-artist_wrong_email:
-  name: "name_artist_wrong_email"
+<% 1.upto(10) do |i| %>
+artist_<%= i %>:
+  email: artist_<%= i %>@gmail.com
+  name: artist_<%= i %>
+  nb_plays: <%= rand(100...10000) %>
+  duration: <%= rand(10...100) %>
+<% end %>

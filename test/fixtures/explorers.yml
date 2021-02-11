@@ -1,0 +1,13 @@
+# DO NOT USE THIS
+# EMAIL       : gaston@gmail.com  / jacques@gmail.com
+# NICKNAME    : reb12             / cartier53
+
+# CREATING 10 EXPLORERS
+
+<% 1.upto(10) do |i| %>
+explorer_<%= i %>:
+  email: explorer_<%= i %>@gmail.com
+  first_name: explorer_<%= i %>_first_name
+  last_name: explorer_<%= i %>_last_name
+  nickname: explorer_<%= i %>_nickname
+<% end %>

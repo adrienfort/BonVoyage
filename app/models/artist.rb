@@ -5,6 +5,7 @@ class Artist < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :fan_artists, dependent: :destroy
+  has_many :explorers, through: :fan_artists
 
   validates :name, presence: true, uniqueness: true
 end

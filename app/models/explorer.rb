@@ -5,6 +5,7 @@ class Explorer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :fan_artists, dependent: :destroy
+  has_many :artists, through: :fan_artists
 
   validates :first_name, presence: true
   validates :last_name, presence: true
