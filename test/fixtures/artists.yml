@@ -2,6 +2,8 @@
 # EMAILS  : booba@gmail.com / a@a.com     / b@b.com
 # NAME    : Booba           / Booba bis   /
 
+# CREATING 10 ARTISTS
+
 <% 1.upto(10) do |i| %>
 artist_<%= i %>:
   email: artist_<%= i %>@gmail.com

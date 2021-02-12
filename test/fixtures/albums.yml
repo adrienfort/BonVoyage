@@ -2,11 +2,15 @@
 # | album_id(artist)_id(album) |
 # ------------------------------
 
+# DO NOT USE THIS :
+# NAME  :  Circle
+
 # CREATING 5 ALBUMS TO ARTIST_1 / ALBUM_1...5
 
-<% 1.upto(5) do |i| %>
+<% 1.upto(10) do |i| %>
 album_1_<%= i %>:
   artist: artist_1
+  name: album_1_<%= i %>
   meaning: meaning album_1_<%= i %>
 <% end %>
 

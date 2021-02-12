@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_091337) do
+ActiveRecord::Schema.define(version: 2021_02_12_102946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_091337) do
     t.float "duration", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
@@ -55,6 +56,15 @@ ActiveRecord::Schema.define(version: 2021_02_12_091337) do
     t.index ["reset_password_token"], name: "index_explorers_on_reset_password_token", unique: true
   end
 
+  create_table "fan_albums", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "explorer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_fan_albums_on_album_id"
+    t.index ["explorer_id"], name: "index_fan_albums_on_explorer_id"
+  end
+
   create_table "fan_artists", force: :cascade do |t|
     t.bigint "explorer_id", null: false
     t.bigint "artist_id", null: false
@@ -65,6 +75,8 @@ ActiveRecord::Schema.define(version: 2021_02_12_091337) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "fan_albums", "albums"
+  add_foreign_key "fan_albums", "explorers"
   add_foreign_key "fan_artists", "artists"
   add_foreign_key "fan_artists", "explorers"
 end

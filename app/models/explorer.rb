@@ -4,8 +4,10 @@ class Explorer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :fan_albums, dependent: :destroy
   has_many :fan_artists, dependent: :destroy
   has_many :artists, through: :fan_artists
+  has_many :albums, through: :fan_albums
 
   validates :first_name, presence: true
   validates :last_name, presence: true

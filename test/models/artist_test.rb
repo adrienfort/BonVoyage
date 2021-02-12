@@ -35,30 +35,12 @@ class ArtistTest < ActiveSupport::TestCase
     artist_1.destroy
   end
 
-  test "verify Artist nb_plays update" do
-    artist = artists(:artist_1)
-    nb_plays = artist.nb_plays
-
-    artist.nb_plays += 120
-    assert_equal artist.nb_plays, nb_plays + 120, "Unable to update Artist duration"
-  end
-
-  test "verify Artist duration update" do
-    artist = artists(:artist_1)
-    duration = artist.duration
-
-    artist.duration += 3.52
-    assert_equal artist.duration, duration + 3.52, "Unable to update (+) Artist duration"
-    artist.duration -= 2.45
-    assert_equal artist.duration, duration + 3.52 - 2.45, "Unable to update (-) Artist duration"
-  end
-
   test "verify Artist access to fan_artists, explorers, albums" do
     artist = artists(:artist_1)
 
     assert_equal artist.fan_artists.count, 10, "Unable to count Artist fan_artists"
     assert_equal artist.explorers.count, 10, "Unable to count Artist explorers through fan_artists"
-    assert_equal artist.albums.count, 5, "Unable to count Artist albums"
+    assert_equal artist.albums.count, 10, "Unable to count Artist albums"
   end
 
   test "verify Artist destroy fan_artists when destroy" do

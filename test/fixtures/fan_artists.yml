@@ -13,6 +13,7 @@ fan_artist_1_<%= i %>:
 <% end %>
 
 # CREATING 9 FANS TO ARTIST_1...10 / EXPLORER_1
+
 <% 2.upto(10) do |i| %>
 fan_artist_<%= i %>_1:
   explorer: explorer_1

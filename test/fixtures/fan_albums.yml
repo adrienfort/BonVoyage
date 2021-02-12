@@ -1,0 +1,21 @@
+# ------------------------------------
+# | fan_album_id(album)_id(explorer) |
+# ------------------------------------
+
+# !!! fan_album_2_2 mustn't be used !!!
+
+# CREATING 10 FANS TO ALBUM_1_1 / EXPLORER_1...10
+
+<% 1.upto(10) do |i| %>
+fan_album_1_1_<%= i %>:
+  explorer: explorer_<%= i %>
+  album: album_1_1
+<% end %>
+
+# CREATING 9 FANS TO ALBUM_1_2...10 / EXPLORER_1
+
+<% 2.upto(10) do |i| %>
+fan_album_1_<%= i %>_1:
+  explorer: explorer_1
+  album: album_1_<%= i %>
+<% end %>
