@@ -1,0 +1,12 @@
+# ------------------------------
+# | album_id(artist)_id(album) |
+# ------------------------------
+
+# CREATING 5 ALBUMS TO ARTIST_1 / ALBUM_1...5
+
+<% 1.upto(5) do |i| %>
+album_1_<%= i %>:
+  artist: artist_1
+  meaning: meaning album_1_<%= i %>
+<% end %>
+

@@ -5,9 +5,10 @@ class ArtistTest < ActiveSupport::TestCase
   test "verify Artist creation" do
     artist = Artist.new(email: "booba@gmail.com", password: "azerty", name: "Booba")
 
+    assert artist.save, "Unable to save Artist with right params"
     assert_equal artist.nb_plays, 0, "Invalid set of Artist nb_plays"
     assert_equal artist.duration, 0, "Invalid set of Artist duration"
-    assert artist.valid? "Unable to valid Artist with right params"
+    artist.destroy
   end
 
   test "verify Artist name validations" do
@@ -52,11 +53,12 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal artist.duration, duration + 3.52 - 2.45, "Unable to update (-) Artist duration"
   end
 
-  test "verify Artist access to fan_artists and explorers" do
+  test "verify Artist access to fan_artists, explorers, albums" do
     artist = artists(:artist_1)
 
     assert_equal artist.fan_artists.count, 10, "Unable to count Artist fan_artists"
     assert_equal artist.explorers.count, 10, "Unable to count Artist explorers through fan_artists"
+    assert_equal artist.albums.count, 5, "Unable to count Artist albums"
   end
 
   test "verify Artist destroy fan_artists when destroy" do
@@ -74,6 +76,15 @@ class ArtistTest < ActiveSupport::TestCase
 
     artist.destroy
     assert_equal Explorer.count, nb_explorers, "Artist destroy explorers when destroy"
+  end
+
+  test "verify Artist destroy albums when destroy" do
+    artist = artists(:artist_1)
+    nb_albums = Album.count
+    artist_nb_albums = artist.albums.count
+
+    artist.destroy
+    assert_equal Album.count, nb_albums - artist_nb_albums, "Unable to destroy Artist albums when destroy"
   end
 
 end
