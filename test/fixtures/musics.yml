@@ -1,0 +1,14 @@
+# ------------------------------
+# | music_id(album)_id(music) |
+# ------------------------------
+
+# DO NOT USE THIS :
+# NAME  :  Starting Over
+
+# CREATING MUSICS TO ALBUM_1_1
+
+<% 1.upto(10) do |i| %>
+music_1_1_<%= i %>:
+  name: music_1_1_<%= i %>
+  album: album_1_1
+<% end %>

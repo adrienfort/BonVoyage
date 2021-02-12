@@ -69,4 +69,10 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal Album.count, nb_albums - artist_nb_albums, "Unable to destroy Artist albums when destroy"
   end
 
+  test "verify Artist access to musics"  do
+    artist = artists(:artist_1)
+
+    assert_equal artist.musics.count, 10, "Unable to access Artist musics"
+  end
+
 end

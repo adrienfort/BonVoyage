@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_102946) do
+ActiveRecord::Schema.define(version: 2021_02_12_113005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,9 +74,21 @@ ActiveRecord::Schema.define(version: 2021_02_12_102946) do
     t.index ["explorer_id"], name: "index_fan_artists_on_explorer_id"
   end
 
+  create_table "musics", force: :cascade do |t|
+    t.string "name"
+    t.integer "nb_plays", default: 0
+    t.float "duration", default: 0.0
+    t.integer "nb_love", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "album_id", null: false
+    t.index ["album_id"], name: "index_musics_on_album_id"
+  end
+
   add_foreign_key "albums", "artists"
   add_foreign_key "fan_albums", "albums"
   add_foreign_key "fan_albums", "explorers"
   add_foreign_key "fan_artists", "artists"
   add_foreign_key "fan_artists", "explorers"
+  add_foreign_key "musics", "albums"
 end
