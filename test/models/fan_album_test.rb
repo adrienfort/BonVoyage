@@ -2,6 +2,8 @@ require 'test_helper'
 
 class FanAlbumTest < ActiveSupport::TestCase
 
+  # -------------------------------------- CREATION ---------------------------------
+
   test "verify FanAlbum creation and validations" do
     fan = FanAlbum.new()
     album = albums(:album_1_1)
@@ -14,12 +16,16 @@ class FanAlbumTest < ActiveSupport::TestCase
     assert fan.valid?, "Unable to valid FanAlbum with right params"
   end
 
+  # -------------------------------------- ACCESS ----------------------------------
+
   test "verify FanAlbum access to explorer and artist" do
     fan_album = fan_albums(:fan_album_1_1_1)
 
     assert_equal "explorer_1@gmail.com", fan_album.explorer.email, "Unable to access from FanAlbum to explorer"
     assert_equal "album_1_1", fan_album.album.name, "Unable to access from FanAlbum to album"
   end
+
+  # ------------------------------------- DESTROY ------------------------------------
 
   test "verify FanAlbum doesn't destroy explorer or album when destroy" do
     fan_album = fan_albums(:fan_album_1_1_1)

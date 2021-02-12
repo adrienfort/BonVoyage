@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ArtistTest < ActiveSupport::TestCase
 
+  # --------------------------------- CREATION ---------------------------------
+
   test "verify Artist creation" do
     artist = Artist.new(email: "booba@gmail.com", password: "azerty", name: "Booba")
 
@@ -35,13 +37,23 @@ class ArtistTest < ActiveSupport::TestCase
     artist_1.destroy
   end
 
-  test "verify Artist access to fan_artists, explorers, albums" do
+  # ----------------------------------- ACCESS ----------------------------------------
+
+  test "verify Artist access to explorers throught fan_artists" do
     artist = artists(:artist_1)
 
     assert_equal artist.fan_artists.count, 10, "Unable to count Artist fan_artists"
     assert_equal artist.explorers.count, 10, "Unable to count Artist explorers through fan_artists"
-    assert_equal artist.albums.count, 10, "Unable to count Artist albums"
   end
+
+  test "verify Artist access to musics through albums"  do
+    artist = artists(:artist_1)
+
+    assert_equal artist.albums.count, 10, "Unable to count Artist albums"
+    assert_equal artist.musics.count, 10, "Unable to access Artist musics"
+  end
+
+  # ---------------------------------- DESTROY --------------------------------------
 
   test "verify Artist destroy fan_artists when destroy" do
     artist = artists(:artist_1)
@@ -52,14 +64,6 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal FanArtist.count, nb_fan_artists - artist_nb_fan_artists, "Unable to destroy Artist fan_artists when destroy"
   end
 
-  test "verify Artist doesn't destroy explorers when destroy" do
-    artist = artists(:artist_1)
-    nb_explorers = Explorer.count
-
-    artist.destroy
-    assert_equal Explorer.count, nb_explorers, "Artist destroy explorers when destroy"
-  end
-
   test "verify Artist destroy albums when destroy" do
     artist = artists(:artist_1)
     nb_albums = Album.count
@@ -67,12 +71,6 @@ class ArtistTest < ActiveSupport::TestCase
 
     artist.destroy
     assert_equal Album.count, nb_albums - artist_nb_albums, "Unable to destroy Artist albums when destroy"
-  end
-
-  test "verify Artist access to musics"  do
-    artist = artists(:artist_1)
-
-    assert_equal artist.musics.count, 10, "Unable to access Artist musics"
   end
 
 end

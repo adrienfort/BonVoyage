@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ExplorerTest < ActiveSupport::TestCase
 
+  # ------------------------------- CREATION ----------------------------------
+
   test "verify Explorer creation" do
     explorer = Explorer.new(email: "gaston@gmail.com", password: "azerty",
       first_name: "Gaston", last_name: "Rebuffat", nickname: "reb12")
@@ -51,14 +53,30 @@ class ExplorerTest < ActiveSupport::TestCase
     explorer_1.destroy
   end
 
-  test "verify Explorer fan_artists, fan_albums, artists, albums" do
+  # ----------------------------------- ACCESS -----------------------------------
+
+  test "verify Explorer access to artists through fan_artists" do
     explorer = explorers(:explorer_1)
 
     assert_equal explorer.fan_artists.count, 10, "Unable to count Explorer fans_artists"
     assert_equal explorer.artists.count, 10, "Unalbe to count Explorer artists"
+  end
+
+  test "verify Explorer access to albums through fan_albums" do
+    explorer = explorers(:explorer_1)
+
     assert_equal explorer.fan_albums.count, 10, "Unable to count Explorer fan_albums"
     assert_equal explorer.albums.count, 10, "Unalbe to count Explorer albums"
   end
+
+  test "verify Explorer access to musics through fan_musics" do
+    explorer = explorers(:explorer_1)
+
+    assert_equal explorer.fan_musics.count, 10, "Unable to count Explorer fan_musics"
+    assert_equal explorer.musics.count, 10, "Unable to count Explorer musics"
+  end
+
+  # ----------------------------------- DESTROY -----------------------------------
 
   test "verify Explorer destroy fan_artists when destroy" do
     explorer = explorers(:explorer_1)
@@ -66,7 +84,7 @@ class ExplorerTest < ActiveSupport::TestCase
     explorer_nb_fan_artists = explorer.fan_artists.count
 
     explorer.destroy
-    assert_equal FanArtist.count, nb_fan_artists - explorer_nb_fan_artists, "Unable to destroy Explorer fan_artists when destroy"
+    assert_equal FanArtist.count, nb_fan_artists - explorer_nb_fan_artists, "Unable to destroy fan_artists when Explorer destroy"
   end
 
   test "verify Explorer destroy fan_albums when destroy" do
@@ -75,23 +93,16 @@ class ExplorerTest < ActiveSupport::TestCase
     explorer_nb_fan_albums = explorer.fan_albums.count
 
     explorer.destroy
-    assert_equal FanAlbum.count, nb_fan_albums - explorer_nb_fan_albums, "Unable to destroy Explorer fan_albums when destroy"
+    assert_equal FanAlbum.count, nb_fan_albums - explorer_nb_fan_albums, "Unable to destroy fan_albums when Explorer destroy"
   end
 
-  test "verify Explorer doesn't destroy artists when destroy" do
+  test "verify Explorer destroy fan_musics when destroy" do
     explorer = explorers(:explorer_1)
-    nb_artists = Artist.count
+    nb_fan_musics = FanMusic.count
+    explorer_nb_fan_musics = explorer.fan_musics.count
 
     explorer.destroy
-    assert_equal Artist.count, nb_artists, "Explorer destroy artists when destroy"
-  end
-
-  test "verify Explorer doesn't destroy albums when destroy" do
-    explorer = explorers(:explorer_1)
-    nb_albums = Album.count
-
-    explorer.destroy
-    assert_equal Album.count, nb_albums, "Explorer destroy albums when destroy"
+    assert_equal FanMusic.count, nb_fan_musics - explorer_nb_fan_musics, "Unable to destroy fan_musics when Explorer destroy"
   end
 
 end

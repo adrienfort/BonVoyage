@@ -1,0 +1,19 @@
+# ------------------------------------
+# | fan_music_id(music)_id(explorer) |
+# ------------------------------------
+
+# CREATION 10 FANS TO MUSIC_1_1_1 / EXPLORER_1...10
+
+<% (1).upto(10) do |i| %>
+  fan_music_1_1_1_<%= i %>:
+    explorer: explorer_<%= i %>
+    music: music_1_1_1
+<% end %>
+
+# CREATION 9 FANS TO MUSIC_1_1_2...9 / EXPLORER_1
+
+<% (2).upto(10) do |i| %>
+  fan_music_1_1_<%= i %>_1:
+    explorer: explorer_1
+    music: music_1_1_<%= i %>
+<% end %>

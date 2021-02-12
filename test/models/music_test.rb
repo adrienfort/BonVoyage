@@ -2,6 +2,8 @@ require 'test_helper'
 
 class MusicTest < ActiveSupport::TestCase
 
+  # ------------------------------------- CREATION ------------------------------
+
   test "verify Music creation and validations" do
     name_music = "Starting Over"
     album = albums(:album_1_1)
@@ -17,11 +19,31 @@ class MusicTest < ActiveSupport::TestCase
     assert_equal music.duration, 0, "Invalid set of Music duration"
   end
 
+  # ------------------------------------ ACCESS ---------------------------------
+
   test "verify Music access to artist through album" do
     music = musics(:music_1_1_1)
     name_artist = artists(:artist_1).name
 
     assert_equal music.album.artist.name, name_artist, "Unable to access Music artist"
+  end
+
+  test "verify Music access to explorer through fan_music" do
+    music = musics(:music_1_1_1)
+
+    assert_equal music.fan_musics.count, 10, "Unable to count Music fan_musics"
+    assert_equal music.explorers.count, 10, "Unable to access Music explorer"
+  end
+
+  # ------------------------------------ DESTROY -------------------------------
+
+  test "verify Music destroy fan_musics when destroy" do
+    music = musics(:music_1_1_1)
+    nb_fan_musics = FanMusic.count
+    music_nb_fan_musics = music.fan_musics.count
+
+    music.destroy
+    assert_equal FanMusic.count, nb_fan_musics - music_nb_fan_musics, "Unable to destroy fan_musics when Music destroy"
   end
 
   test "verify Music doesn't destroy Album when destroy" do
