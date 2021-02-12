@@ -105,4 +105,13 @@ class ExplorerTest < ActiveSupport::TestCase
     assert_equal FanMusic.count, nb_fan_musics - explorer_nb_fan_musics, "Unable to destroy fan_musics when Explorer destroy"
   end
 
+  test "verify Explorer destroy playlists when destroy" do
+    explorer = explorers(:explorer_1)
+    nb_playlists = Playlist.count
+    explorer_nb_playlists = explorer.playlists.count
+
+    explorer.destroy
+    assert_equal Playlist.count, nb_playlists - explorer_nb_playlists, "Unable to destroy playlists when Explorer destroy"
+  end
+
 end

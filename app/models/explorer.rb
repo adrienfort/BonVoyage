@@ -10,6 +10,7 @@ class Explorer < ApplicationRecord
   has_many :artists, through: :fan_artists
   has_many :albums, through: :fan_albums
   has_many :musics, through: :fan_musics
+  has_many :playlists, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

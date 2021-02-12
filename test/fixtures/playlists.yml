@@ -1,0 +1,7 @@
+# ------------------------------
+# | music_id(explorer)_id(playlist) |
+# ------------------------------
+
+playlist_1_1:
+  name: playlist_1_1
+  explorer: explorer_1

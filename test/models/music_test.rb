@@ -17,6 +17,7 @@ class MusicTest < ActiveSupport::TestCase
     assert_equal music.nb_love, 0, "Invalid set of Music nb_love"
     assert_equal music.nb_plays, 0, "Invalid set of Music nb_plays"
     assert_equal music.duration, 0, "Invalid set of Music duration"
+    music.destroy
   end
 
   # ------------------------------------ ACCESS ---------------------------------
