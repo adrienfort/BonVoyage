@@ -47,6 +47,15 @@ class MusicTest < ActiveSupport::TestCase
     assert_equal FanMusic.count, nb_fan_musics - music_nb_fan_musics, "Unable to destroy fan_musics when Music destroy"
   end
 
+  test "verify Music destroy playlist_musics when destroy" do
+    music = musics(:music_1_1_1)
+    nb_playlist_musics = PlaylistMusic.count
+    music_nb_playlist_musics = music.playlist_musics.count
+
+    music.destroy
+    assert_equal PlaylistMusic.count, nb_playlist_musics - music_nb_playlist_musics, "Unable to destroy playlist_musics when Music destroy"
+  end
+
   test "verify Music doesn't destroy Album when destroy" do
     music = musics(:music_1_1_1)
     nb_albums = Album.count

@@ -1,0 +1,11 @@
+# ------------------------------------------
+# | playlist_musics_id(music)_id(playlist) |
+# ------------------------------------------
+
+# CREATING 10 PLAYLIST_MUSICS MUSIC_1_1_1...10 / PLAYLIST_1_1
+
+<% (1).upto(10) do |i| %>
+  playlist_music_1_1_<%= i %>_1_1:
+    music: music_1_1_<%= i %>
+    playlist: playlist_1_1
+<% end %>
