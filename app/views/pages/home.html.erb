@@ -1,2 +1,8 @@
 <h1>This is the home page</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% if explorer_signed_in? %>
+  <%= link_to "Start now", explorer_path(current_explorer.id) %>
+<% else %>
+  <%= link_to "Start now", new_explorer_session_path %>
+<% end %>
