@@ -1,4 +1,26 @@
-<h1>This is the <%= @explorer.nickname %> show</h1>
-<p>find me in app/views/explorer/show.html.erb</p>
+<div class = "m-5">
+  <h1>This is the <%= @explorer.nickname %> show</h1>
+  <p>find me in app/views/explorer/show.html.erb</p>
 
-<%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
+  <%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
+
+  <h3><%= pluralize(@artists.count, "artist") %></h3>
+  <% @artists.each do |artist| %>
+  <p><%= artist.name %></p>
+  <% end %>
+
+  <h3><%= pluralize(@albums.count, "album") %></h3>
+  <% @albums.each do |album| %>
+  <p><%= album.name %></p>
+  <% end %>
+
+  <h3><%= pluralize(@playlists.count, "playlist") %></h3>
+  <% @playlists.each do |playlist| %>
+  <p><%= playlist.name %></p>
+  <% end %>
+
+  <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
+  <% @explorer.musics.each do |music| %>
+  <p><%= music.name %></p>
+  <% end %>
+</div>
