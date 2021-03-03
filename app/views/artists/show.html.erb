@@ -1,0 +1,13 @@
+<div class="m-5">
+  <h1>This is the <%= @artist.name %> show</h1>
+  <p>find me in app/views/artists/show.html.erb</p>
+
+  <div class="m-3">
+    <% if explorer_signed_in? %>
+      <%= link_to "Explorer", explorer_path(current_explorer.id) %>
+    <% else %>
+      <%= link_to "Explorer", new_explorer_session_path %>
+    <% end %>
+    <%= link_to "Destroy session", destroy_artist_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
+  </div>
+</div>

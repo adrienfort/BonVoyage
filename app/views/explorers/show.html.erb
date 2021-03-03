@@ -1,8 +1,15 @@
 <div class = "m-5">
   <h1>This is the <%= @explorer.nickname %> show</h1>
-  <p>find me in app/views/explorer/show.html.erb</p>
+  <p>find me in app/views/explorers/show.html.erb</p>
 
-  <%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
+  <div class="m-3">
+    <% if artist_signed_in? %>
+      <%= link_to "Artist", artist_path(current_artist.id) %>
+    <% else %>
+      <%= link_to "Artist", new_artist_session_path %>
+    <% end %>
+    <%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
+  </div>
 
   <h3><%= pluralize(@artists.count, "artist") %></h3>
   <% @artists.each do |artist| %>

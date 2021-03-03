@@ -15,7 +15,7 @@ Artist.destroy_all
 
 puts "    DONE"
 
-puts "  - Creating one user ..."
+puts "  - Creating 1 explorer ..."
 
 explorer = Explorer.new(email: "adrien@gmail.com", password: "azerty", first_name: "Adrien", last_name: "Fort", nickname: "ad12")
 
