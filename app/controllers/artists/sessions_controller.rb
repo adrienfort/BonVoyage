@@ -28,6 +28,6 @@ class Artists::SessionsController < Devise::SessionsController
   # The path used after sign up.
   def after_sign_in_path_for(resource)
     # super(resource)
-    artist_path(current_artist.id)
+    dashboard_artist_path(current_artist.id)
   end
 end

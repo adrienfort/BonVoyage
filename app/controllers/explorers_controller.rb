@@ -1,6 +1,6 @@
 class ExplorersController < ApplicationController
 
-  def show
+  def dashboard
     @explorer = Explorer.find(params[:id])
     @artists = @explorer.artists
     @albums = @explorer.albums

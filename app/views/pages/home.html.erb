@@ -1,8 +1,18 @@
 <h1>This is the home page</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<% if explorer_signed_in? %>
-  <%= link_to "Start now", explorer_path(current_explorer.id) %>
-<% else %>
-  <%= link_to "Start now", new_explorer_session_path %>
+<div class="m-3">
+  <% if explorer_signed_in? %>
+    <%= link_to "I'm an Explorer", dashboard_explorer_path(current_explorer.id) %>
+  <% else %>
+    <%= link_to "I'm an Explorer", new_explorer_session_path %>
 <% end %>
+</div>
+
+<div class="m-3">
+  <% if artist_signed_in? %>
+    <%= link_to "I'm an Artist", dashboard_artist_path(current_artist.id) %>
+  <% else %>
+    <%= link_to "I'm an Artist", new_artist_session_path %>
+  <% end %>
+</div>
