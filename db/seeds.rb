@@ -103,7 +103,7 @@ bavard.save!
 woods.save!
 blue_world.save!
 
-puts "  DONE"
+puts "    DONE"
 
 puts "  - Creating 6 fan_musics"
 
