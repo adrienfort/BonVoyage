@@ -1,2 +1,29 @@
-<h1>This the <%= @artist.name %> show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<div class="m-5">
+  <h1>This the <%= @artist.name %> show</h1>
+  <p>Find me in app/views/artists/show.html.erb</p>
+
+  <div class="m-3">
+    <h4><%= pluralize(@artist.nb_plays, "play") %></h4>
+    <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>
+    <h4><%= pluralize(@artist.duration, "seconds") %></h4>
+  </div>
+
+  <div class="m-3">
+    <h4>Popular songs</h4>
+    <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each do |music| %>
+      <p><%= music.name %></p>
+    <% end %>
+  </div>
+
+  <div class="m-3">
+    <h4>Most popular Album</h4>
+    <%= @artist.albums.sort_by(&:nb_plays).reverse.first.name %>
+  </div>
+
+  <div class="m-3">
+    <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
+    <% @artist.albums.each do |album| %>
+      <p><%= album.name %></p>
+    <% end %>
+  </div>
+</div>

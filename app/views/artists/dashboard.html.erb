@@ -3,6 +3,19 @@
   <p>find me in app/views/artists/dashboard.html.erb</p>
 
   <div class="m-3">
+    <h4><%= pluralize(@artist.nb_plays, "play") %></h4>
+    <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>
+    <h4><%= pluralize(@artist.duration, "seconds") %></h4>
+  </div>
+
+  <div class="m-3">
+    <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
+    <% @artist.albums.each do |album| %>
+      <p><%= album.name %></p>
+    <% end %>
+  </div>
+
+  <div class="m-3">
     <% if explorer_signed_in? %>
       <%= link_to "Explorer", dashboard_explorer_path(current_explorer.id) %>
     <% else %>
