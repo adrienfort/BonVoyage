@@ -23,7 +23,7 @@
 
   <h3><%= pluralize(@playlists.count, "playlist") %></h3>
   <% @playlists.each do |playlist| %>
-  <p><%= playlist.name %></p>
+  <p><%= link_to playlist.name, playlist_path(playlist.id) %></p>
   <% end %>
 
   <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     member do
       get :dashboard
     end
+    collection do
+      resources :playlists, only: [:show]
+    end
   end
 
   resources :albums, only: [:show]
