@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get :dashboard
     end
     collection do
-      resources :playlists, only: [:show]
+      resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy]
     end
   end
 

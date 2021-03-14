@@ -13,18 +13,22 @@
 
   <h3><%= pluralize(@artists.count, "artist") %></h3>
   <% @artists.each do |artist| %>
-  <%= link_to artist.name, artist_path(artist.id) %>
+    <%= link_to artist.name, artist_path(artist.id) %>
   <% end %>
 
   <h3><%= pluralize(@albums.count, "album") %></h3>
   <% @albums.each do |album| %>
-  <%= link_to album.name, album_path(album.id) %>
+    <%= link_to album.name, album_path(album.id) %>
   <% end %>
 
   <h3><%= pluralize(@playlists.count, "playlist") %></h3>
   <% @playlists.each do |playlist| %>
-  <p><%= link_to playlist.name, playlist_path(playlist.id) %></p>
+    <p><%= link_to playlist.name, playlist_path(playlist.id) %></p>
+    <p><%= link_to "Edit #{playlist.name}", edit_playlist_path(playlist.id) %></p>
+    <p><%= link_to "Destroy #{playlist.name}", playlist_path(playlist),
+                    method: :delete, data: { confirm: "Are you sure ?"} %></p>
   <% end %>
+  <p><%= link_to "Create a new playlist", new_playlist_path %></p>
 
   <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
   <% @explorer.musics.each do |music| %>
