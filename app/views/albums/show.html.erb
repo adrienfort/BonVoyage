@@ -1,0 +1,12 @@
+<div class="m-5">
+  <h1>This is the <%= @album.name %> show</h1>
+  <p>find me in app/views/albums/show.html.erb</p>
+
+  <h3>Meaning:</h3>
+  <p><%= @album.meaning %></p>
+
+  <h3>Musics:</h3>
+  <% @album.musics.each do |music| %>
+    <p><%= music.name %></p>
+  <% end %>
+</div>

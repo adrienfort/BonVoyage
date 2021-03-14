@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :artists, controllers: {
     confirmations: 'artists/confirmations',
@@ -21,15 +22,14 @@ Rails.application.routes.draw do
     member do
       get :dashboard
     end
-    collection do
-      resources :artists, only: [:show]
-    end
   end
 
-  resources :artists, only: [] do
+  resources :albums, only: [:show]
+
+  resources :artists, only: [:show] do
     member do
       get :dashboard
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

@@ -18,7 +18,7 @@
 
   <h3><%= pluralize(@albums.count, "album") %></h3>
   <% @albums.each do |album| %>
-  <p><%= album.name %></p>
+  <%= link_to album.name, album_path(album.id) %>
   <% end %>
 
   <h3><%= pluralize(@playlists.count, "playlist") %></h3>
