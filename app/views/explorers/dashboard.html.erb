@@ -2,6 +2,10 @@
   <h1>This is the <%= @explorer.nickname %> dashboard</h1>
   <p>find me in app/views/explorers/dashboard.html.erb</p>
 
+  <div class="m-5">
+    <p><%= link_to "Edit profile", edit_explorer_registration_path(@explorer) %></p>
+  </div>
+
   <div class="m-3">
     <% if artist_signed_in? %>
       <%= link_to "Artist", dashboard_artist_path(current_artist.id) %>
@@ -23,12 +27,12 @@
 
   <h3><%= pluralize(@playlists.count, "playlist") %></h3>
   <% @playlists.each do |playlist| %>
-    <p><%= link_to playlist.name, playlist_path(playlist.id) %></p>
-    <p><%= link_to "Edit #{playlist.name}", edit_playlist_path(playlist.id) %></p>
-    <p><%= link_to "Destroy #{playlist.name}", playlist_path(playlist),
+    <p><%= link_to playlist.name, explorer_playlist_path(@explorer, playlist) %></p>
+    <p><%= link_to "Edit #{playlist.name}", edit_explorer_playlist_path(@explorer, playlist) %></p>
+    <p><%= link_to "Destroy #{playlist.name}", explorer_playlist_path(@explorer, playlist),
                     method: :delete, data: { confirm: "Are you sure ?"} %></p>
   <% end %>
-  <p><%= link_to "Create a new playlist", new_playlist_path %></p>
+  <p><%= link_to "Create a new playlist", new_explorer_playlist_path(@explorer) %></p>
 
   <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
   <% @explorer.musics.each do |music| %>

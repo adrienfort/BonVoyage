@@ -1,0 +1,12 @@
+<div class="m-5">
+  <h1>This the editation of <%= @album.name %></h1>
+  <p>find me in app/views/albums/edit.html.erb</p>
+
+  <div class="m-3">
+    <%= simple_form_for [@artist, @album] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :meaning %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

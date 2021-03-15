@@ -60,4 +60,9 @@ class Explorers::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     super(resource)
   end
+
+  def after_update_path_for(resources)
+    dashboard_explorer_path(current_explorer)
+  end
+
 end

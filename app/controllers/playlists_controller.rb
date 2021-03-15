@@ -5,21 +5,23 @@ class PlaylistsController < ApplicationController
   end
 
   def new
+    @explorer = current_explorer
     @playlist = Playlist.new()
   end
 
   def create
-    explorer = current_explorer
+    @explorer = current_explorer
     @playlist = Playlist.new(playlist_params)
-    @playlist.explorer = explorer
+    @playlist.explorer = @explorer
     if @playlist.save
-      redirect_to dashboard_explorer_path(explorer)
+      redirect_to dashboard_explorer_path(@explorer)
     else
       render :new
     end
   end
 
   def edit
+    @explorer = current_explorer
     @playlist = Playlist.find(params[:id])
   end
 

@@ -2,6 +2,10 @@
   <h1>This is the <%= @artist.name %> dashboard</h1>
   <p>find me in app/views/artists/dashboard.html.erb</p>
 
+  <div class="m-5">
+    <p><%= link_to "Edit profile", edit_artist_registration_path(@artist) %></p>
+  </div>
+
   <div class="m-3">
     <h4><%= pluralize(@artist.nb_plays, "play") %></h4>
     <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>
@@ -12,7 +16,14 @@
     <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
     <% @artist.albums.each do |album| %>
       <p><%= link_to album.name, album_path(album.id) %></p>
+      <p><%= link_to "Edit #{album.name}", edit_artist_album_path(@artist, album) %></p>
+      <p><%= link_to "Destroy #{album.name}", artist_album_path(@artist, album),
+                    method: :delete, data: { confirm: "Are you sure ?"} %></p>
     <% end %>
+  </div>
+
+  <div class="m-3">
+    <%= link_to "Post an album", new_artist_album_path(@artist) %>
   </div>
 
   <div class="m-3">
