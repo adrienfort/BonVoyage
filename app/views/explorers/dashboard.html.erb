@@ -2,7 +2,7 @@
   <h1>This is the <%= @explorer.nickname %> dashboard</h1>
   <p>find me in app/views/explorers/dashboard.html.erb</p>
 
-  <div class="m-5">
+  <div class="m-3">
     <p><%= link_to "Edit profile", edit_explorer_registration_path(@explorer) %></p>
   </div>
 
@@ -15,27 +15,43 @@
     <%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
   </div>
 
-  <h3><%= pluralize(@artists.count, "artist") %></h3>
-  <% @artists.each do |artist| %>
-    <%= link_to artist.name, artist_path(artist.id) %>
-  <% end %>
+  <div class="m-3">
+    <h3><%= pluralize(@artists.count, "artist") %></h3>
+    <% @artists.each do |artist| %>
+      <div class="m-1">
+        <%= link_to artist.name, artist_path(artist.id) %>
+      </div>
+    <% end %>
+  </div>
 
-  <h3><%= pluralize(@albums.count, "album") %></h3>
-  <% @albums.each do |album| %>
-    <%= link_to album.name, album_path(album.id) %>
-  <% end %>
+  <div class="m-3">
+    <h3><%= pluralize(@albums.count, "album") %></h3>
+    <% @albums.each do |album| %>
+      <div class="m-1">
+        <%= link_to album.name, album_path(album.id) %>
+      </div>
+    <% end %>
+  </div>
 
-  <h3><%= pluralize(@playlists.count, "playlist") %></h3>
-  <% @playlists.each do |playlist| %>
-    <p><%= link_to playlist.name, explorer_playlist_path(@explorer, playlist) %></p>
-    <p><%= link_to "Edit #{playlist.name}", edit_explorer_playlist_path(@explorer, playlist) %></p>
-    <p><%= link_to "Destroy #{playlist.name}", explorer_playlist_path(@explorer, playlist),
-                    method: :delete, data: { confirm: "Are you sure ?"} %></p>
-  <% end %>
-  <p><%= link_to "Create a new playlist", new_explorer_playlist_path(@explorer) %></p>
+  <div class="m-3">
+    <h3><%= pluralize(@playlists.count, "playlist") %></h3>
+    <% @playlists.each do |playlist| %>
+      <div class="m-1">
+        <%= link_to playlist.name, explorer_playlist_path(@explorer, playlist) %>
+        <%= link_to "| Edit #{playlist.name}", edit_explorer_playlist_path(@explorer, playlist) %>
+        <%= link_to "| Destroy #{playlist.name}", explorer_playlist_path(@explorer, playlist),
+                        method: :delete, data: { confirm: "Are you sure ?"} %>
+      </div>
+    <% end %>
+    <%= link_to "Create a new playlist", new_explorer_playlist_path(@explorer) %>
+  </div>
 
-  <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
-  <% @explorer.musics.each do |music| %>
-  <p><%= music.name %></p>
-  <% end %>
+  <div class="m-3">
+    <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
+    <% @explorer.musics.each do |music| %>
+      <div class="m-1">
+        <p><%= music.name %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
