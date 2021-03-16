@@ -1,6 +1,8 @@
 class AlbumsController < ApplicationController
 
   def show
+    @artist = params[:artist_id]
+    @explorer = params[:explorer_id]
     @album = Album.find(params[:id])
   end
 
@@ -14,7 +16,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.artist = @artist
     if @album.save!
-      redirect_to album_path(@album)
+      redirect_to artist_album_path(@artist, @album)
     else
       render :new
     end
@@ -30,7 +32,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @album.update(album_params)
 
-    redirect_to album_path(@album)
+    redirect_to artist_album_path(@artist, @album)
   end
 
   def destroy

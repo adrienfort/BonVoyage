@@ -9,4 +9,12 @@
   <% @album.musics.each do |music| %>
     <p><%= music.name %></p>
   <% end %>
+
+  <div class="m-3">
+    <% if @explorer == nil %>
+      <%= link_to "Go to my dashboard", dashboard_artist_path(@artist) %>
+    <% else %>
+      <%= link_to "See artist's profile", explorer_artist_path(current_explorer, @artist) %>
+    <% end %>
+  </div>
 </div>

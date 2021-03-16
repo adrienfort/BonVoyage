@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @explorer = current_explorer
     @artist = Artist.find(params[:id])
   end
 

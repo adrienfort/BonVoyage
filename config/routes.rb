@@ -19,16 +19,18 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   resources :explorers, only: [] do
+    resources :artists, only: [:show] do
+      resources :fan_artists, only: [:create, :destroy]
+      resources :albums, only: [:show]
+    end
     resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy]
     member do
       get :dashboard
     end
   end
 
-  resources :albums, only: [:show]
-
-  resources :artists, only: [:show] do
-    resources :albums, only: [:new, :create, :edit, :update, :destroy]
+  resources :artists, only: [] do
+    resources :albums, only: [:show, :new, :create, :edit, :update, :destroy]
     member do
       get :dashboard
     end

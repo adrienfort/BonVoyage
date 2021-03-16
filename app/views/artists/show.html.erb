@@ -9,6 +9,15 @@
   </div>
 
   <div class="m-3">
+    <% fan_artist = @explorer.fan_artists.find_by(artist_id: @artist.id) %>
+    <% if fan_artist != nil %>
+      <%= link_to "Destroy coup de foudre", explorer_artist_fan_artist_path(@explorer, @artist, fan_artist), method: :delete %>
+    <% else %>
+      <%= link_to "Coup de foudre", explorer_artist_fan_artists_path(@explorer, @artist), method: :post %>
+    <% end %>
+  </div>
+
+  <div class="m-3">
     <h4>Popular songs</h4>
     <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each do |music| %>
       <p><%= music.name %></p>
@@ -17,13 +26,14 @@
 
   <div class="m-3">
     <h4>Most popular Album</h4>
-    <%= @artist.albums.sort_by(&:nb_plays).reverse.first.name %>
+    <% album = @artist.albums.sort_by(&:nb_plays).reverse.first %>
+    <p><%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %></p>
   </div>
 
   <div class="m-3">
     <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
     <% @artist.albums.each do |album| %>
-      <p><%= album.name %></p>
+      <p><%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %></p>
     <% end %>
   </div>
 </div>

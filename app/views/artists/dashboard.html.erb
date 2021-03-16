@@ -15,7 +15,7 @@
   <div class="m-3">
     <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
     <% @artist.albums.each do |album| %>
-      <p><%= link_to album.name, album_path(album.id) %></p>
+      <p><%= link_to album.name, artist_album_path(@artist, album.id) %></p>
       <p><%= link_to "Edit #{album.name}", edit_artist_album_path(@artist, album) %></p>
       <p><%= link_to "Destroy #{album.name}", artist_album_path(@artist, album),
                     method: :delete, data: { confirm: "Are you sure ?"} %></p>
