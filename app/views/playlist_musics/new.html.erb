@@ -1,0 +1,12 @@
+<div class="m-5">
+  <h1>This the creation of a new PlaylistMusic</h1>
+  <p>Find me in app/views/playlist_musics/new.html.erb</p>
+
+  <div class="m-3">
+    <%= simple_form_for [ @explorer, @music, @playlist_music ] do |f| %>
+      <%= f.select  :playlist,
+                    options_for_select(@explorer.playlists.collect { | playlist | [playlist.name, playlist.id] }) %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

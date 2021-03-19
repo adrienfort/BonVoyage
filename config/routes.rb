@@ -28,6 +28,9 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :musics, only: [] do
+      resources :playlist_musics, only: [:new, :create, :delete]
+    end
     resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy]
     member do
       get :dashboard
