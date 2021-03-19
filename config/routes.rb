@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   resources :explorers, only: [] do
     resources :artists, only: [:show] do
       resources :fan_artists, only: [:create, :destroy]
-      resources :albums, only: [:show]
+      resources :albums, only: [:show] do
+        resources :fan_albums, only: [:create, :destroy]
+        resources :musics, only: [] do
+          resources :fan_musics, only: [:create, :destroy]
+        end
+      end
     end
     resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy]
     member do

@@ -26,10 +26,11 @@
   </div>
 
   <div class="m-3">
-    <h3><%= pluralize(@albums.count, "album") %></h3>
-    <% @albums.each do |album| %>
+    <h3><%= pluralize(@fan_albums.count, "album") %></h3>
+    <% @fan_albums.each do |fan_album| %>
       <div class="m-1">
-        <%= link_to album.name, explorer_artist_album_path(@explorer, album.artist, album) %>
+        <%= link_to fan_album.album.name, explorer_artist_album_path(@explorer, fan_album.album.artist, fan_album.album) %>
+        <%= link_to "| Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, fan_album.album.artist, fan_album.album, fan_album), method: :delete, remote: true %>
       </div>
     <% end %>
   </div>
@@ -48,10 +49,11 @@
   </div>
 
   <div class="m-3">
-    <h3><%= pluralize(@explorer.musics.count, "coup") %> de foudre</h3>
-    <% @explorer.musics.each do |music| %>
+    <h3><%= pluralize(@fan_musics.count, "coup") %> de foudre</h3>
+    <% @fan_musics.each do |fan_music| %>
       <div class="m-1">
-        <p><%= music.name %></p>
+        <%= fan_music.music.name %>
+        <%= link_to "Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, fan_music.music.album.artist, fan_music.music.album, fan_music.music, fan_music), method: :delete, remote: true %>
       </div>
     <% end %>
   </div>

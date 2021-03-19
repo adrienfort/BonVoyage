@@ -11,29 +11,49 @@
   <div class="m-3">
     <% fan_artist = @explorer.fan_artists.find_by(artist_id: @artist.id) %>
     <% if fan_artist != nil %>
-      <%= link_to "Destroy coup de foudre", explorer_artist_fan_artist_path(@explorer, @artist, fan_artist), method: :delete %>
+      <%= link_to "Destroy coup de foudre", explorer_artist_fan_artist_path(@explorer, @artist, fan_artist), method: :delete, remote: true %>
     <% else %>
-      <%= link_to "Coup de foudre", explorer_artist_fan_artists_path(@explorer, @artist), method: :post %>
+      <%= link_to "Coup de foudre", explorer_artist_fan_artists_path(@explorer, @artist), method: :post, remote: true %>
     <% end %>
   </div>
 
   <div class="m-3">
     <h4>Popular songs</h4>
     <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each do |music| %>
-      <p><%= music.name %></p>
+      <div class="m-1">
+        <%= music.name %>
+        <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
+        <% if fan_music != nil %>
+          <%= link_to "Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, @artist, music.album, music, fan_music), method: :delete, remote: true %>
+        <% else %>
+          <%= link_to "Coup de foudre", explorer_artist_album_music_fan_musics_path(@explorer, @artist, music.album, music), method: :post, remote: true %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
   <div class="m-3">
     <h4>Most popular Album</h4>
     <% album = @artist.albums.sort_by(&:nb_plays).reverse.first %>
-    <p><%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %></p>
+    <%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %>
+    <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
+    <% if fan_album != nil %>
+      <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true %>
+    <% else %>
+      <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true %>
+    <% end %>
   </div>
 
   <div class="m-3">
     <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
     <% @artist.albums.each do |album| %>
-      <p><%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %></p>
-    <% end %>
+      <%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %>
+      <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
+      <% if fan_album != nil %>
+        <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true %>
+      <% else %>
+        <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true %>
+      <% end %>
+      <% end %>
   </div>
 </div>

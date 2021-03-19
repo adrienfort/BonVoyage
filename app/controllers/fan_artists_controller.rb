@@ -6,7 +6,7 @@ class FanArtistsController < ApplicationController
     @fan_artist = FanArtist.new(explorer: @explorer, artist: @artist)
 
     @fan_artist.save!
-    redirect_to explorer_artist_path(@explorer, @artist)
+    redirect_back(fallback_location: explorer_artist_path(@explorer, @artist))
   end
 
   def destroy
@@ -15,7 +15,7 @@ class FanArtistsController < ApplicationController
     @fan_artist = FanArtist.find(params[:id])
 
     @fan_artist.destroy
-    redirect_back(fallback_location: dashboard_explorer_path(@explorer))
+    redirect_back(fallback_location: explorer_artist_path(@explorer, @artist))
   end
 
 end

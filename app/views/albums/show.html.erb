@@ -2,16 +2,33 @@
   <h1>This is the <%= @album.name %> show</h1>
   <p>find me in app/views/albums/show.html.erb</p>
 
+  <div class="m-3">
+    <% fan_album = @explorer.fan_albums.find_by(album_id: @album.id) %>
+    <% if fan_album != nil %>
+      <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, @album, fan_album), method: :delete, remote: true %>
+    <% else %>
+      <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, @album), method: :post, remote: true %>
+    <% end %>
+  </div>
+
   <h3>Meaning:</h3>
   <p><%= @album.meaning %></p>
 
   <h3>Musics:</h3>
   <% @album.musics.each do |music| %>
-    <p><%= music.name %></p>
+    <div class="m-1">
+      <%= music.name %>
+      <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
+      <% if fan_music != nil %>
+        <%= link_to "Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, @artist, @album, music, fan_music), method: :delete, remote: true %>
+      <% else %>
+        <%= link_to "Coup de foudre", explorer_artist_album_music_fan_musics_path(@explorer, @artist, @album, music), method: :post, remote: true %>
+      <% end %>
+    </div>
   <% end %>
 
   <div class="m-3">
-    <% if @explorer == nil %>
+    <% if @artist == current_artist %>
       <%= link_to "Go to my dashboard", dashboard_artist_path(@artist) %>
     <% else %>
       <%= link_to "See artist's profile", explorer_artist_path(current_explorer, @artist) %>

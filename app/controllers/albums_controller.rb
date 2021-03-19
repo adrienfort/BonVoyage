@@ -1,8 +1,8 @@
 class AlbumsController < ApplicationController
 
   def show
-    @artist = params[:artist_id]
-    @explorer = params[:explorer_id]
+    @artist = Artist.find(params[:artist_id])
+    @explorer = current_explorer
     @album = Album.find(params[:id])
   end
 
