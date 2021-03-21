@@ -3,7 +3,10 @@
   <p>find me in app/views/playlists/show.html.erb </p>
 
   <h3>Musics:</h3>
-  <% @playlist.musics.each do |music| %>
-    <p><%= music.name %></p>
+  <% @playlist_musics.each do |playlist_music| %>
+    <div class="m-1">
+      <%= playlist_music.music.name %>
+      <%= link_to "| Remove from #{@playlist.name}", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), method: :delete, remote: true %>
+    </div>
   <% end %>
 </div>

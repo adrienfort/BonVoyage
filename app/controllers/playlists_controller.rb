@@ -1,7 +1,9 @@
 class PlaylistsController < ApplicationController
 
   def show
+    @explorer = current_explorer
     @playlist = Playlist.find(params[:id])
+    @playlist_musics = @playlist.playlist_musics
   end
 
   def new

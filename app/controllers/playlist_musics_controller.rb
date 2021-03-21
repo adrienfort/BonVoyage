@@ -12,16 +12,19 @@ class PlaylistMusicsController < ApplicationController
     @music = Music.find(params[:music_id])
     @playlist_music = PlaylistMusic.new(playlist_id: @playlist.id, music_id: @music.id)
 
-    @playlist_music.save!
+    if @playlist.playlist_musics.where(music_id: @music.id, playlist_id: @playlist).count == 0
+      @playlist_music.save!
+    end
     redirect_to dashboard_explorer_path(@explorer)
   end
 
   def destroy
     @explorer = current_explorer
-    @playlist = Playlist.find(params[:id])
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist_music = PlaylistMusic.find(params[:id])
 
-    @playlist.destroy
-    redirect_to dashboard_explorer_path(@explorer)
+    @playlist_music.destroy
+    redirect_to explorer_playlist_path(@explorer, @playlist)
   end
 
 end
