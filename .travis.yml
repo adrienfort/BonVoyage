@@ -14,7 +14,6 @@ addons:
 before_script:
   - psql -c 'create database bon_voyage;' -U postgres
 script:
-  - bundle exec rake db:create:all
   - bundle exec rake db:migrate
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
