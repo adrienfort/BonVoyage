@@ -12,7 +12,6 @@ before_install:
 addons:
   postgresql: '9.6'
 before_script:
-  - psql -c "CREATE ROLE BonVoyage PASSWORD 'BonVoyage' LOGIN CREATEDB;" -U postgres
   - psql -c 'create database bon_voyage;' -U postgres
 script:
   - bundle exec rake db:create:all
