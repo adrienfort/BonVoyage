@@ -81,5 +81,7 @@ test:
 production:
   <<: *default
   database: BonVoyage_production
-  username: "BonVoyage"
-  password: <%= ENV['BONVOYAGE_DATABASE_PASSWORD'] %>
+  username: BonVoyage
+  password:
+
+  # password: <%= ENV['BONVOYAGE_DATABASE_PASSWORD'] { "" } %>
