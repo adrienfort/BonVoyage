@@ -12,7 +12,7 @@ before_install:
 addons:
   postgresql: '9.6'
 before_script:
-  - psql -c 'create database Bon Voyage;' -U postgres
+  - psql -c 'create database bon_voyage;' -U postgres
 script:
   - bundle exec rake db:create:all
   - bundle exec rake db:migrate
