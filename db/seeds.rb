@@ -55,6 +55,17 @@ mils_3_0 = Album.new(meaning: "J'ai toujours aimé les previlèges", name: "M.I.
 mils_2_0 = Album.new(meaning: "Mes ennemis sont mes meilleurs amis", name: "M.I.L.S 2.0", artist: ninho)
 circles = Album.new(meaning: "I wanna go flex", name: "Circles", artist: mac_miller)
 
+file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+dans_la_legende.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+deux_freres.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+mils_3_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+mils_2_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+circles.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+
 dans_la_legende.save!
 deux_freres.save!
 mils_3_0.save!

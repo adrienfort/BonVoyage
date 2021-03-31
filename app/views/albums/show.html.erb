@@ -2,6 +2,8 @@
   <h1>This is the <%= @album.name %> show</h1>
   <p>find me in app/views/albums/show.html.erb</p>
 
+  <%= cl_image_tag @album.photo.key, height: 100, width: 100, crop: :fill %>
+
   <div class="m-3">
     <% fan_album = @explorer.fan_albums.find_by(album_id: @album.id) %>
     <% if fan_album != nil %>

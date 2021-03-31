@@ -2,6 +2,8 @@
   <h1>This the <%= @artist.name %> show</h1>
   <p>Find me in app/views/artists/show.html.erb</p>
 
+  <%= cl_image_tag @artist.photo.key, height: 100, width: 100, crop: :fill %>
+
   <div class="m-3">
     <h4><%= pluralize(@artist.nb_plays, "play") %></h4>
     <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>

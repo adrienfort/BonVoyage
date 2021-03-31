@@ -8,4 +8,5 @@ class Album < ApplicationRecord
   has_many :explorers, through: :fan_albums
 
   validates :name, presence: true
+  validates :photo, presence: true
 end

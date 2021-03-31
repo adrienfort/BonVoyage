@@ -1,7 +1,7 @@
 class Explorer < ApplicationRecord
   before_create do |explorer|
-    file = open("#{Rails.root.to_s}/app/assets/images/avatar.png")
-    explorer.photo.attach(io: file, filename: 'logo.png', content_type: 'image/png')
+    file = open("#{Rails.root.to_s}/app/assets/images/default-explorer-avatar.png")
+    explorer.photo.attach(io: file, filename: 'default-explorer-avatar.png', content_type: 'image/png')
   end
 
   # Include default devise modules. Others available are:

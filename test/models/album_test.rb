@@ -6,6 +6,8 @@ class AlbumTest < ActiveSupport::TestCase
 
   test "verify Album creation" do
     album = Album.new(artist: artists(:artist_1), name: "Circle")
+    file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
+    album.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
 
     assert album.save, "Unable to save Album with right params"
     assert_equal album.duration, 0, "Invalid set of Album duration"
@@ -16,11 +18,14 @@ class AlbumTest < ActiveSupport::TestCase
   test "verify Album validations"  do
     name_album = "Circle"
     album = Album.new()
+    file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
 
     assert_not album.valid?, "Valid Album without artist and name"
     album.artist = artists(:artist_1)
     assert_not album.valid?, "Valid Album without name"
     album.name = name_album
+    assert_not album.valid?, "Valid Album without photo"
+    album.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
     assert album.valid?, "Unable to valid Album with right params"
   end
 

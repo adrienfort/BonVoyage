@@ -2,6 +2,8 @@
   <h1>This is the <%= @artist.name %> dashboard</h1>
   <p>find me in app/views/artists/dashboard.html.erb</p>
 
+  <%= cl_image_tag @artist.photo.key, height: 48, width: 48, crop: :fill %>
+
   <div class="m-5">
     <p><%= link_to "Edit profile", edit_artist_registration_path(@artist) %></p>
   </div>
