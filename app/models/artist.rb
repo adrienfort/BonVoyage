@@ -4,6 +4,8 @@ class Artist < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :photo
+
   has_many :fan_artists, dependent: :destroy
   has_many :explorers, through: :fan_artists
   has_many :albums, dependent: :destroy
