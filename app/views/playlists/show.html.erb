@@ -2,6 +2,8 @@
   <h1>This the playlist <%= @playlist.name %> show</h1>
   <p>find me in app/views/playlists/show.html.erb </p>
 
+  <%= cl_image_tag @playlist.photo.key, height: 200, width: 200, crop: :fill %>
+
   <h3>Musics:</h3>
   <% @playlist_musics.each do |playlist_music| %>
     <div class="m-1">

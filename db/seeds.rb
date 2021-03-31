@@ -56,15 +56,15 @@ mils_2_0 = Album.new(meaning: "Mes ennemis sont mes meilleurs amis", name: "M.I.
 circles = Album.new(meaning: "I wanna go flex", name: "Circles", artist: mac_miller)
 
 file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
-dans_la_legende.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+dans_la_legende.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/jpg')
 file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
-deux_freres.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+deux_freres.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/jpg')
 file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
-mils_3_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+mils_3_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/jpg')
 file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
-mils_2_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+mils_2_0.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/jpg')
 file = open("#{Rails.root.to_s}/app/assets/images/default-album-picture.jpg")
-circles.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/png')
+circles.photo.attach(io: file, filename: 'default-album-picture.png', content_type: 'image/jpg')
 
 dans_la_legende.save!
 deux_freres.save!
@@ -136,25 +136,27 @@ puts "    DONE"
 
 puts "  - Creating 1 playlist ..."
 
-bon_voyage = Playlist.new(name: "Bon Voyage", explorer: explorer)
+playlist = Playlist.new(name: "Killing me softly", explorer: explorer)
+file = open("#{Rails.root.to_s}/app/assets/images/default-playlist-picture.jpg")
+playlist.photo.attach(io: file, filename: 'default-playlist-picture.png', content_type: 'image/jpg')
 
-bon_voyage.save!
+playlist.save!
 
 puts "    DONE"
 
 puts "  - Creating 5 playlist_musics ..."
 
-bon_voyage_woods = PlaylistMusic.new(playlist: bon_voyage, music: woods)
-bon_voyage_blue_world = PlaylistMusic.new(playlist: bon_voyage, music: blue_world)
-bon_voyage_fendi = PlaylistMusic.new(playlist: bon_voyage, music: fendi)
-bon_voyage_audd = PlaylistMusic.new(playlist: bon_voyage, music: audd)
-bon_voyage_zoulou_tchaing = PlaylistMusic.new(playlist: bon_voyage, music: zoulou_tchaing)
+playlist_woods = PlaylistMusic.new(playlist: playlist, music: woods)
+playlist_blue_world = PlaylistMusic.new(playlist: playlist, music: blue_world)
+playlist_fendi = PlaylistMusic.new(playlist: playlist, music: fendi)
+playlist_audd = PlaylistMusic.new(playlist: playlist, music: audd)
+playlist_zoulou_tchaing = PlaylistMusic.new(playlist: playlist, music: zoulou_tchaing)
 
-bon_voyage_woods.save!
-bon_voyage_blue_world.save!
-bon_voyage_fendi.save!
-bon_voyage_audd.save!
-bon_voyage_zoulou_tchaing.save!
+playlist_woods.save!
+playlist_blue_world.save!
+playlist_fendi.save!
+playlist_audd.save!
+playlist_zoulou_tchaing.save!
 
 puts "    DONE"
 

@@ -5,6 +5,7 @@
   <div class="m-3">
     <%= simple_form_for [ @explorer, @playlist ] do |f| %>
       <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
       <%= f.submit %>
     <% end %>
   </div>

@@ -3,7 +3,7 @@ class Artist < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   before_create do |artist|
     file = open("#{Rails.root.to_s}/app/assets/images/default-artist-avatar.jpg")
-    artist.photo.attach(io: file, filename: 'default-artist-avatar.png', content_type: 'image/png')
+    artist.photo.attach(io: file, filename: 'default-artist-avatar.png', content_type: 'image/jpg')
   end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

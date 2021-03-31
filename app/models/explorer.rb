@@ -4,6 +4,13 @@ class Explorer < ApplicationRecord
     explorer.photo.attach(io: file, filename: 'default-explorer-avatar.png', content_type: 'image/png')
   end
 
+  after_create do |explorer|
+    playlist = Playlist.new(name: "Bon Voyage", explorer: explorer)
+    file = open("#{Rails.root.to_s}/app/assets/images/logo.png")
+    playlist.photo.attach(io: file, filename: 'default-bonvoyage-playlist-logo', content_type: 'image/png')
+    playlist.save
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -38,6 +38,7 @@ class AlbumsController < ApplicationController
   def destroy
     @artist = current_artist
     @album = Album.find(params[:id])
+    @album.photo.purge
     @album.destroy
 
     redirect_to dashboard_artist_path(@artist)

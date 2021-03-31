@@ -16,6 +16,10 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.explorer = @explorer
     if @playlist.save
+      if !@playlist.photo.attached?
+        file = open("#{Rails.root.to_s}/app/assets/images/default-playlist-picture.jpg")
+        @playlist.photo.attach(io: file, filename: 'default-playlist-bonvoyage-picture.jpg', content_type: 'image/jpg')
+      end
       redirect_to dashboard_explorer_path(@explorer)
     else
       render :new
@@ -36,6 +40,7 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.find(params[:id])
+    @playlist.photo.purge
     @playlist.destroy
 
     redirect_to dashboard_explorer_path(current_explorer)
@@ -44,7 +49,7 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :photo)
   end
 
 end
