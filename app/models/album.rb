@@ -1,4 +1,8 @@
 class Album < ApplicationRecord
+  before_destroy do |album|
+    album.photo.purge
+  end
+
   belongs_to :artist
 
   has_one_attached :photo
@@ -9,4 +13,5 @@ class Album < ApplicationRecord
 
   validates :name, presence: true
   validates :photo, presence: true
+  validates :musics, length: { in: 0...40 }
 end

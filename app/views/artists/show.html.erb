@@ -24,6 +24,7 @@
     <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each do |music| %>
       <div class="m-1">
         <%= music.name %>
+        <%= cl_video_tag music.audio_file.key, source_types: [:mp3], controls: true, height: 30, width: 300 %>
         <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
         <% if fan_music != nil %>
           <%= link_to "Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, @artist, music.album, music, fan_music), method: :delete, remote: true %>

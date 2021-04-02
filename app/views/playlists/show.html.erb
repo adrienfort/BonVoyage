@@ -8,6 +8,7 @@
   <% @playlist_musics.each do |playlist_music| %>
     <div class="m-1">
       <%= playlist_music.music.name %>
+      <%= cl_video_tag playlist_music.music.audio_file.key, source_types: [:mp3], controls: true, height: 30, width: 300 %>
       <%= link_to "| Remove from #{@playlist.name}", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), method: :delete, remote: true %>
     </div>
   <% end %>

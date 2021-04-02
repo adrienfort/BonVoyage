@@ -11,6 +11,10 @@ class Explorer < ApplicationRecord
     playlist.save
   end
 
+  before_destroy do |explorer|
+    explorer.photo.purge
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

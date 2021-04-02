@@ -7,6 +7,12 @@
       <%= f.input :name %>
       <%= f.input :meaning %>
       <%= f.input :photo, as: :file %>
+      <%= f.simple_fields_for :musics do |music| %>
+        <% i = 0 %>
+        <%= music.input :name %>
+        <%= music.input :audio_file, as: :file %>
+        <% i += 1 %>
+      <% end %>
       <%= f.submit %>
     <% end %>
   </div>

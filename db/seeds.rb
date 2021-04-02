@@ -103,6 +103,27 @@ bavard = Music.new(name: "Bavard", album: mils_2_0)
 woods = Music.new(name: "Woods", album: circles)
 blue_world = Music.new(name: "Blue World", album: circles)
 
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+onizuka.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+humain.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+audd.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+zoulou_tchaing.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+filon.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+privileges.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+fendi.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+bavard.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+woods.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
+blue_world.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
+
 onizuka.save!
 humain.save!
 audd.save!

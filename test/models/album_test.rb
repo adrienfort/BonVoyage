@@ -12,7 +12,6 @@ class AlbumTest < ActiveSupport::TestCase
     assert album.save, "Unable to save Album with right params"
     assert_equal album.duration, 0, "Invalid set of Album duration"
     assert_equal album.nb_plays, 0, "Invalid set of Album nb_plays"
-    album.photo.purge
     album.destroy
   end
 

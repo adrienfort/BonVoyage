@@ -12,14 +12,24 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    # Create an album
     @artist = current_artist
     @album = Album.new(album_params)
     @album.artist = @artist
-    if @album.save
-      redirect_to artist_album_path(@artist, @album)
-    else
+    if !@album.save
       render :new
     end
+    # Create a music
+    # @music = Music.new(name: params[:album][:musics][:name], album: @album)
+    # @file = open(params[:album][:musics][:audio_file])
+    # @music.audio_file.attach(io: file, filename: "audio-music-name", content_type: "audio/mpeg")
+    @music = Music.new(music_params)
+    @music.album = @album
+    if !@music.save
+      @album.destroy
+      render :new
+    end
+    redirect_to dashboard_artist_path(@artist)
   end
 
   def edit
@@ -47,7 +57,11 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:name, :meaning, :photo)
+    params.require(:album).permit(:name, :meaning, :photo, musics: [])
+  end
+
+  def music_params
+    params[:album].require(:musics).permit(:name, :audio_file)
   end
 
 end
