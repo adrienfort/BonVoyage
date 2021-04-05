@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     unlocks: 'explorers/unlocks'
   }
 
+  get 'components', to: 'pages#components'
+
   root to: 'pages#home'
   resources :explorers, only: [] do
     resources :artists, only: [:show] do

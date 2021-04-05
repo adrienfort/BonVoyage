@@ -1,0 +1,12 @@
+// set basics fonts
+body {
+  h1, h2 {
+    font-family: $font-family-h1-h2, cursive;
+  }
+  h3, h4, h5, h6 {
+    font-family: $font-family-h3-h6, cursive;
+  }
+  p {
+    font-family: $font-family-p, sans-serif;
+  }
+}
