@@ -53,6 +53,12 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal artist.musics.count, 10, "Unable to access Artist musics"
   end
 
+  test "verify Artist access to plays through album through music" do
+    artist = artists(:artist_1)
+
+    assert_equal artist.plays.count, 10, "Unable to connect Artist and Play"
+  end
+
   # ---------------------------------- DESTROY --------------------------------------
 
   test "verify Artist destroy fan_artists when destroy" do

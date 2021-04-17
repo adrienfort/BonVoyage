@@ -17,6 +17,7 @@ class Artist < ApplicationRecord
   has_many :explorers, through: :fan_artists
   has_many :albums, dependent: :destroy
   has_many :musics, through: :albums
+  has_many :plays, through: :musics
 
   validates :name, presence: true, uniqueness: true
 

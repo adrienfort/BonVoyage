@@ -9,25 +9,29 @@ class AlbumsController < ApplicationController
   def new
     @artist = current_artist
     @album = Album.new()
+    @album.musics.build
   end
 
   def create
-    # Create an album
     @artist = current_artist
     @album = Album.new(album_params)
     @album.artist = @artist
     if !@album.save
-      render :new
+      render :new and return
     end
-    # Create a music
-    # @music = Music.new(name: params[:album][:musics][:name], album: @album)
-    # @file = open(params[:album][:musics][:audio_file])
-    # @music.audio_file.attach(io: file, filename: "audio-music-name", content_type: "audio/mpeg")
-    @music = Music.new(music_params)
-    @music.album = @album
-    if !@music.save
+    if params[:album][:musics_attributes] == nil || params[:album][:musics_attributes].values.count < 0
       @album.destroy
-      render :new
+      flash[:alert] = "You must attach at least one music."
+      render :new and return
+    end
+    params[:album][:musics_attributes].each do |key, value|
+      music = Music.new(music_params(key))
+      music.album = @album
+      if !music.save
+        @album.destroy
+        flash[:alert] = "Invalid audio music."
+        render :new and return
+      end
     end
     redirect_to dashboard_artist_path(@artist)
   end
@@ -60,8 +64,8 @@ class AlbumsController < ApplicationController
     params.require(:album).permit(:name, :meaning, :photo, musics: [])
   end
 
-  def music_params
-    params[:album].require(:musics).permit(:name, :audio_file)
+  def music_params(index)
+    params[:album][:musics_attributes].require("#{index}").permit(:name, :audio_file)
   end
 
 end

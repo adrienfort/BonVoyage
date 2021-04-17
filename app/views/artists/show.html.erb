@@ -5,7 +5,7 @@
   <%= cl_image_tag @artist.photo.key, height: 100, width: 100, crop: :fill %>
 
   <div class="m-3">
-    <h4><%= pluralize(@artist.nb_plays, "play") %></h4>
+    <h4><%= pluralize(@artist.plays.count, "play") %></h4>
     <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>
     <h4><%= pluralize(@artist.duration, "seconds") %></h4>
   </div>

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     # end
     resources :musics, only: [] do
       resources :playlist_musics, only: [:new, :create]
+      resources :plays, only: [:create]
     end
     resources :playlists, only: [:show, :new, :create, :edit, :update, :destroy] do
       resources :playlist_musics, only: [:destroy]
@@ -45,6 +46,10 @@ Rails.application.routes.draw do
     member do
       get :dashboard
     end
+  end
+
+  resources :musics, only: [] do
+    resources :plays, only: [:create]
   end
 
   resources :artists, only: [] do

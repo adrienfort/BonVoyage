@@ -5,11 +5,15 @@
   <%= cl_image_tag @playlist.photo.key, height: 200, width: 200, crop: :fill %>
 
   <h3>Musics:</h3>
-  <% @playlist_musics.each do |playlist_music| %>
-    <div class="m-1">
-      <%= playlist_music.music.name %>
-      <%= cl_video_tag playlist_music.music.audio_file.key, source_types: [:mp3], controls: true, height: 30, width: 300 %>
-      <%= link_to "| Remove from #{@playlist.name}", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), method: :delete, remote: true %>
-    </div>
-  <% end %>
+  <div data-controller="music">
+    <% @playlist_musics.each_with_index do |playlist_music, index| %>
+      <div class="m-1">
+        <%= playlist_music.music.name %>
+          <video data-music_id="<%= playlist_music.music.id %>"
+            data-action="ended->music#play_music" height="30" width="300" id="music-<%= index %>" controls="controls"
+            src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= playlist_music.music.audio_file.key %>"></video>
+        <%= link_to "| Remove from #{@playlist.name}", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), method: :delete, remote: true %>
+      </div>
+    <% end %>
+  </div>
 </div>

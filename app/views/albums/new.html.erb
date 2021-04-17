@@ -7,13 +7,15 @@
       <%= f.input :name %>
       <%= f.input :meaning %>
       <%= f.input :photo, as: :file %>
-      <% i = 1 %>
-      <%= f.simple_fields_for :musics do |music| %>
-        <h5>Music #<%= i %></h5>
-        <%= music.input :name %>
-        <%= music.input :audio_file, as: :file %>
-        <% i += 1 %>
-      <% end %>
+      <div data-controller="album">
+        <%= f.simple_fields_for :musics, Music.new do |music| %>
+          <div class="new-album-musics" data-album-target="new_musics">
+          </div>
+        <% end %>
+        <div class="mt-3 mb-3">
+          <button data-action="click->album#add_music" type="button" class="btn btn-primary">Add a music</button>
+        </div>
+      </div>
       <%= f.submit %>
     <% end %>
   </div>

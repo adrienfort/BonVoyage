@@ -8,11 +8,14 @@ class MusicTest < ActiveSupport::TestCase
     name_music = "Starting Over"
     album = albums(:album_1_1)
     music = Music.new()
+    file = open("#{Rails.root.to_s}/app/assets/audios/default-audio.mp3")
 
     assert_not music.valid?, "Valid Music without name and album_id"
     music.album = album
     assert_not music.valid?, "Valid Music without name"
     music.name = name_music
+    assert_not music.valid?, "Save music without audio_file"
+    music.audio_file.attach(io: file, filename: "default-audio-music-name", content_type: "audio/mpeg")
     assert music.save, "Unable to save Music with right params"
     assert_equal music.nb_love, 0, "Invalid set of Music nb_love"
     assert_equal music.nb_plays, 0, "Invalid set of Music nb_plays"
@@ -62,6 +65,15 @@ class MusicTest < ActiveSupport::TestCase
 
     music.destroy
     assert_equal Album.count, nb_albums, "Music destroy album when destroy"
+  end
+
+  test "verify Music destroy plays when destroyed" do
+    music = musics(:music_1_1_1)
+    music_nb_plays = music.plays.count
+    nb_plays = Play.count
+
+    music.destroy
+    assert_equal Play.count, nb_plays - music_nb_plays, "Music destroy plays when destroyed"
   end
 
 end
