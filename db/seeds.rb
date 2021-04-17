@@ -10,7 +10,7 @@ puts "Building a small seed ..."
 
 puts "  - Destroying actual data ..."
 
-Plays.destroy_all
+Play.destroy_all
 Explorer.destroy_all
 Artist.destroy_all
 
