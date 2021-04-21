@@ -8,4 +8,8 @@ class ExplorersController < ApplicationController
     @playlists = @explorer.playlists
   end
 
+  def research
+    @explorer = current_explorer
+  end
+
 end

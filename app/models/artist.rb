@@ -1,4 +1,6 @@
 class Artist < ApplicationRecord
+  include AlgoliaSearch
+
   before_create do |artist|
     file = open("#{Rails.root.to_s}/app/assets/images/default-artist-avatar.jpg")
     artist.photo.attach(io: file, filename: 'default-artist-avatar.png', content_type: 'image/jpg')
@@ -20,5 +22,11 @@ class Artist < ApplicationRecord
   has_many :plays, through: :musics
 
   validates :name, presence: true, uniqueness: true
+
+  algoliasearch do
+    attributes :name
+
+    customRanking ['desc(fan_artists.count)']
+  end
 
 end

@@ -1,4 +1,6 @@
 class Music < ApplicationRecord
+  include AlgoliaSearch
+
   before_destroy do |music|
     music.audio_file.purge
   end
@@ -14,4 +16,10 @@ class Music < ApplicationRecord
 
   validates :name, presence: true
   validates :audio_file, presence: true
+
+  algoliasearch do
+    attributes :name
+
+    customRanking ['desc(fan_musics.count)']
+  end
 end

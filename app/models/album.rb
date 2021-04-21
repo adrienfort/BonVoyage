@@ -1,4 +1,6 @@
 class Album < ApplicationRecord
+  include AlgoliaSearch
+
   before_destroy do |album|
     album.photo.purge
   end
@@ -15,4 +17,10 @@ class Album < ApplicationRecord
 
   validates :name, presence: true
   validates :photo, presence: true
+
+  algoliasearch do
+    attributes :name
+
+    customRanking ['desc(fan_albums.count)']
+  end
 end

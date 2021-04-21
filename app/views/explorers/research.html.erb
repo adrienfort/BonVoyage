@@ -1,0 +1,15 @@
+<div class="m-5" data-controller="research" data-research-target="research_params"
+     data-app_id="<%= ENV['APP_ALGOLIA_ID'] %>" data-app_key="<%= ENV['API_ALGOLIA_KEY'] %>"
+     data-explorer_id="<%= @explorer.id %>" >
+  <div class="m-2">
+    <label for="pet-select">What do you want to search ?</label>
+    <select name="toSearch" data-research-target="select" data-action="change->research#search">
+        <option value="Artist">Artist</option>
+        <option value="Album">Album</option>
+        <option value="Music">Music</option>
+    </select>
+  </div>
+  <input type="text" data-action="input->research#search">
+  <button type="button" data-action="click->research#search">Search</button>
+  <div id="searchResults" class="m-4" data-research-target="results"></div>
+</div>

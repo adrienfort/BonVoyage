@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
+# Algolia for researches
+gem "algoliasearch-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
