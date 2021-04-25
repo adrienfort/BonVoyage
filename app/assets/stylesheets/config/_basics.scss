@@ -1,16 +1,48 @@
 // set basics fonts
 body {
-  h1, h2 {
+
+  h1, h2, h3, h4, h5 {
     font-family: $font-family-h1-h2, cursive;
   }
-  h3, h4, h5, h6 {
+  h6 {
     font-family: $font-family-h3-h6, cursive;
   }
   p {
     font-family: $font-family-p, sans-serif;
   }
+
+  h1 {
+    font-size: 72px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  h4 {
+    font-size: 24px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
 }
 
 .display-none {
   display: none;
+}
+
+.writting-green {
+  color: $green;
+}
+
+.writting-yellow {
+  color: $yellow;
 }

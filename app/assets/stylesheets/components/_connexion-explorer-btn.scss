@@ -1,0 +1,16 @@
+.connexion-explorer-btn {
+  border: 1px solid $green;
+  border-radius: $border-radius-lg;
+  color: $green;
+  padding: 0.3em 1em;
+  margin: 1em;
+  opacity: 0.9;
+
+  &:hover {
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    color: $green;
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}

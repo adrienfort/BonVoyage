@@ -1,18 +1,23 @@
-<h1>The is the most beautiful app</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="home-page-container">
+  <div id="home-page-writtings">
+    <h1>Bon Voyage</h1>
+    <h3>Explore Artist's univers</h3>
+    <p>Listen freely to music. Discover young artists.</p>
+    <p>Post your music. See your data. Improve your skills. Live your dream.</p>
+  </div>
 
-<div class="m-3">
-  <% if explorer_signed_in? %>
-    <%= link_to "I'm an Explorer", dashboard_explorer_path(current_explorer.id) %>
-  <% else %>
-    <%= link_to "I'm an Explorer", new_explorer_session_path %>
-<% end %>
-</div>
+  <div id="home-page-connexion-btns">
+    <% if explorer_signed_in? %>
+      <%= link_to "Explorer", dashboard_explorer_path(current_explorer.id), class: "connexion-explorer-btn" %>
+    <% else %>
+      <%= link_to "Explorer", new_explorer_session_path, class: "connexion-explorer-btn" %>
+    <% end %>
 
-<div class="m-3">
-  <% if artist_signed_in? %>
-    <%= link_to "I'm an Artist", dashboard_artist_path(current_artist.id) %>
-  <% else %>
-    <%= link_to "I'm an Artist", new_artist_session_path %>
-  <% end %>
+    <% if artist_signed_in? %>
+      <%= link_to "Artist", dashboard_artist_path(current_artist.id), class: "connexion-artist-btn" %>
+    <% else %>
+      <%= link_to "Artist", new_artist_session_path, class: "connexion-artist-btn" %>
+    <% end %>
+  </div>
+
 </div>

@@ -1,0 +1,16 @@
+.connexion-artist-btn {
+  border: 1px solid $yellow;
+  border-radius: $border-radius-lg;
+  color: $yellow;
+  padding: 0.3em 1em;
+  margin: 1em;
+  opacity: 0.9;
+
+  &:hover {
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    color: $yellow;
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
