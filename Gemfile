@@ -41,6 +41,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 # Authentification
 gem 'devise'
+# Authorization
+gem 'pundit'
+# For beautiful JS charts
+gem "chartkick"
+# Usefull for charts
+gem 'groupdate'
 
 group :development, :test do
   gem 'pry-byebug'

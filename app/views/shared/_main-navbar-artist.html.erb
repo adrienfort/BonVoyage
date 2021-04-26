@@ -1,0 +1,31 @@
+<div id="main-navbar-container">
+  <% controller_name = controller.controller_name %>
+  <% action_name = controller.action_name %>
+  <div id="main-navbar-brand">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", height: 48, width: 48, crop: :fill %>
+      <h4 class="writting-yellow">Bon Voyage</h4>
+    <% end %>
+  </div>
+
+  <div id="main-navbar-btns-username">
+    <div id="main-navbar-btns">
+      <% if explorer_signed_in? %>
+        <%= link_to "Explorer", dashboard_explorer_path(current_explorer.id), class: "navbar-explorer-btn" %>
+      <% else %>
+        <%= link_to "Explorer", new_explorer_session_path, class: "navbar-explorer-btn" %>
+      <% end %>
+      <% if artist_signed_in? %>
+        <%= link_to "Artist", dashboard_artist_path(current_artist.id), class: "navbar-artist-btn yellow-border" %>
+      <% else %>
+        <%= link_to "Artist", new_artist_session_path, class: "navbar-artist-btn yellow-border" %>
+      <% end %>
+    </div>
+    <div id="main-navbar-username">
+      <p><%= @artist.name %></p>
+      <%= link_to edit_artist_registration_path(@artist) do %>
+        <%= cl_image_tag @artist.photo.key, class: "navbar-avatar" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="dashboard-navbar-container">
+  <div class="dashboard-navbar-box" id="dashboard-navbar-post">
+    <%= link_to "Post", new_artist_album_path(@artist) %>
+  </div>
+  <div class="dashboard-navbar-box dashboard-navbar-border" id="dashboard-navbar-dashboard" data-artist-target="dashboard_navbar_dashboard" data-action="click->artist#dashboard_change">
+    <h6>Dashboard</h6>
+  </div>
+  <div class="dashboard-navbar-box" id="dashboard-navbar-works" data-artist-target="dashboard_navbar_works" data-action="click->artist#dashboard_change">
+    <h6>My works</h6>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+#main-navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $yellow;
+  padding: 0.2em;
+}
+
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  h4 {
+    margin-left: 0.1em;
+    margin-bottom: 0em;
+  }
+
+  img {
+    height: 3em;
+  }
+}
+
+#main-navbar-btns-username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#main-navbar-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#main-navbar-username {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    margin-right: 2em;
+    margin-left: 1em;
+  }
+}
+
+.navbar-explorer-btn {
+  display: block;
+  border-radius: $border-radius-lg;
+  color: $green;
+  padding: 0.3em 1em;
+  opacity: 0.9;
+  margin: 0em 1em;
+
+  &:hover {
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    color: $green;
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.navbar-artist-btn {
+  display: block;
+  border-radius: $border-radius-lg;
+  color: $yellow;
+  padding: 0.3em 1em;
+  opacity: 0.9;
+  margin: 0em 1em;
+
+  &:hover {
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    color: $yellow;
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.green-border {
+  border: 1px solid $green;
+}
+
+.yellow-border {
+  border: 1px solid $yellow;
+}

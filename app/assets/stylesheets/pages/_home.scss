@@ -1,8 +1,10 @@
 html {
+  width: 100%;
   height: 100%;
 }
 
 body {
+  width: 100%;
   height: 100%;
   text-align: center;
 }
@@ -16,6 +18,14 @@ body {
 }
 
 #home-page-writtings {
+  h1 {
+    color: $yellow;
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    margin-bottom: 1em;
+  }
 }
 
 #home-page-connexion-btns {
@@ -23,13 +33,4 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-h1 {
-  color: $yellow;
-  margin-bottom: 1em;
-}
-
-h3 {
-  margin-bottom: 1em;
 }
