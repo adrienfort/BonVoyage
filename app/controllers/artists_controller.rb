@@ -7,6 +7,9 @@ class ArtistsController < ApplicationController
   end
 
   def dashboard
+    @nb_artists = Artist.all.count
+    @plays_pos = Artist.all.select{ |artist| artist.plays.count > @artist.plays.count}.count
+    @fans_pos = Artist.all.select{ |artist| artist.fan_artists.count > @artist.fan_artists.count}.count
   end
 
   def show

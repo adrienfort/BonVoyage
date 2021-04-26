@@ -1,0 +1,11 @@
+.card-btn {
+  margin: 0px;
+  opacity: 0.9;
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+    color: $white;
+  }
+}

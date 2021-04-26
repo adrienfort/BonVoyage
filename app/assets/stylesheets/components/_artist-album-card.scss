@@ -1,0 +1,30 @@
+.artist-album-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $white;
+  border-radius: $border-radius;
+  width: 13em;
+  height: 13em;
+
+  @media(max-width: 650px) {
+    width: 10em;
+    height: 10em;
+  }
+}
+
+.album-card-update-btn {
+  img {
+    height: 1em;
+    width: 1em;
+  }
+  position: relative;
+  top: -80px;
+  left: 40px;
+
+  @media(max-width: 650px) {
+    top: -64px;
+    left: 44px;
+  }
+}
+

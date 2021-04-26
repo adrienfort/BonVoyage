@@ -5,8 +5,13 @@
   align-items: center;
 }
 
-.artist-dashboard-dashboard {
-  margin-top: 5%;
+.artist-dashboard {
+  margin-top: 2em;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .artist-dashboard-works {
@@ -15,4 +20,48 @@
 
 .display-none {
   display: none;
+}
+
+.dashboard-element {
+  margin-bottom: 2em;
+  h4 {
+    margin-bottom: 1em;
+  }
+}
+
+.dashboard-rakings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.dashboard-raking-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: $border-radius-sm;
+  padding: 1em;
+
+  h3 {
+    color: $yellow;
+  }
+
+  div {
+    max-width: 50%;
+  }
+}
+
+.span-yellow {
+  color: $yellow;
+}
+
+.grid-album {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+
+  @media(max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 }

@@ -4,6 +4,10 @@ const algoliasearch = require('algoliasearch');
 export default class extends Controller {
   static targets = [ 'research_params', 'select', 'results' ];
 
+  connect() {
+    console.log("Connected for reseach")
+  }
+
   search(event) {
     const appId = this.research_paramsTarget.dataset.app_id
     const appKey = this.research_paramsTarget.dataset.app_key

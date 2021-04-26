@@ -10,4 +10,7 @@
       <%= f.submit %>
     <% end %>
   </div>
+
+  <p><%= link_to "Destroy #{@album.name}", artist_album_path(@artist, @album),
+                    method: :delete, data: { confirm: "Are you sure ?"} %></p>
 </div>
