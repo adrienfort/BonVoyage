@@ -1,0 +1,59 @@
+.new-edit-album-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-edit-album-header {
+  min-height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.new-edit-album-header-box {
+  position: relative;
+  div {
+    z-index: -1;
+  }
+  a {
+    color: $white;
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}
+
+.new-edit-album-form {
+  width: 75%;
+  max-width: 500px;
+}
+
+.delete-album-btn {
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0px 75px 0px;
+  color: $red;
+  border: 1px solid $red;
+  border-radius: $border-radius-lg;
+  opacity: 0.9;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    transform: scale(1.1);
+    text-decoration: none;
+    color: $red;
+  }
+
+  @media(max-width: 650px) {
+    height: 3em;
+  }
+}

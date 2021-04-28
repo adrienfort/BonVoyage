@@ -1,4 +1,11 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_artist!, only: [:new, :create]
+  before_action :get_artist, only: [:new, :create, :edit, :update]
+  before_action :get_and_authorize_album, only: [:edit, :update, :destroy]
+
+  def pundit_user
+    current_artist
+  end
 
   def show
     @artist = Artist.find(params[:artist_id])
@@ -7,15 +14,15 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @artist = current_artist
     @album = Album.new()
     @album.musics.build
+    authorize @album
   end
 
   def create
-    @artist = current_artist
     @album = Album.new(album_params)
     @album.artist = @artist
+    authorize @album
     if !@album.save
       render :new and return
     end
@@ -37,21 +44,15 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    @artist = current_artist
-    @album = Album.find(params[:id])
   end
 
   def update
-    @artist = current_artist
-    @album = Album.find(params[:id])
     @album.update(album_params)
-
     redirect_to artist_album_path(@artist, @album)
   end
 
   def destroy
     @artist = current_artist
-    @album = Album.find(params[:id])
     @album.photo.purge
     @album.destroy
 
@@ -66,6 +67,15 @@ class AlbumsController < ApplicationController
 
   def music_params(index)
     params[:album][:musics_attributes].require("#{index}").permit(:name, :audio_file)
+  end
+
+  def get_artist
+    @artist = current_artist
+  end
+
+  def get_and_authorize_album
+    @album = Album.find(params[:id])
+    authorize @album
   end
 
 end

@@ -1,0 +1,33 @@
+.yellow-submit-btn {
+  margin: 2em 0em;
+  width: 100%;
+  height: 2em;
+  background-color: $black;
+  color: $yellow;
+  border: 1px solid $yellow;
+  border-radius: $border-radius-lg;
+  opacity: 0.9;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+  }
+}
+
+.red-submit-btn {
+  margin: 1em 0em;
+  width: 100%;
+  height: 2em;
+  background-color: $black;
+  color: $red;
+  border: 1px solid $red;
+  border-radius: $border-radius-lg;
+  opacity: 0.9;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+  }
+}

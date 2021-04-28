@@ -1,16 +1,27 @@
-<div class="m-5">
-  <h1>This the editation of <%= @album.name %></h1>
-  <p>find me in app/views/albums/edit.html.erb</p>
+<div class="new-edit-album-container">
+  <div class="new-edit-album-header">
+    <div class="new-edit-album-header-box">
+      <h5>You are <span class="underline-yellow">editing ...</span></h5>
+      <h3><%= @album.name %></h3>
+    </div>
+    <div class="new-edit-album-header-box">
+      <%= link_to dashboard_artist_path(@artist) do %>
+        <h6><span class="underline-red">Stop</span> editing</h6>
+      <% end %>
+    </div>
+  </div>
 
-  <div class="m-3">
+  <div class="new-edit-album-form">
     <%= simple_form_for [@artist, @album] do |f| %>
       <%= f.input :name %>
       <%= f.input :meaning %>
       <%= f.input :photo, as: :file %>
-      <%= f.submit %>
+      <%= f.submit "Update", class: "yellow-submit-btn" %>
     <% end %>
-  </div>
 
-  <p><%= link_to "Destroy #{@album.name}", artist_album_path(@artist, @album),
-                    method: :delete, data: { confirm: "Are you sure ?"} %></p>
+    <h6 class="writting-red">Unhappy ?</h6>
+    <%= link_to "Destroy #{@album.name}", artist_album_path(@artist, @album),
+                      method: :delete, data: { confirm: "Are you sure ?"},
+                      class: "delete-album-btn" %>
+  </div>
 </div>

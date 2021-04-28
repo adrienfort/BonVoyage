@@ -56,16 +56,27 @@ body {
       font-size: 10px;
     }
     h6 {
-      font-size: 8px;
+      font-size: 10px;
     }
     p {
-      font-size: 8px;
+      font-size: 10px;
       margin-bottom: 0px;
     }
     a {
-      font-size: 8px;
+      font-size: 10px;
     }
   }
+}
+
+.underline-yellow {
+  opacity: 0.95;
+  padding: 0px 5px;
+  background: linear-gradient(to top, $yellow 40%, transparent 40%)
+}
+
+.underline-red {
+  padding: 0px 5px;
+  background: linear-gradient(to top, $red 40%, transparent 40%)
 }
 
 .writting-green {
@@ -74,4 +85,8 @@ body {
 
 .writting-yellow {
   color: $yellow;
+}
+
+.writting-red {
+  color: $red;
 }

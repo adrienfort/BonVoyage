@@ -6,7 +6,7 @@ export default class extends Controller {
   add_music() {
     const nb = this.new_musicsTarget.querySelectorAll(".new-album-music").length;
     const html = `<div class='new-album-music'>\
-                    <h5>Music ${nb + 1}</h5>\
+                    <h3 class="writting-yellow">Music ${nb + 1}</h3>\
                     <div class='form-group string required album_musics_name'>\
                       <label class='string required' for='album_musics_attributes_${nb}_name'>\
                         Name <abbr title='required'>*</abbr>\

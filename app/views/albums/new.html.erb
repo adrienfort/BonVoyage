@@ -1,8 +1,17 @@
-<div class="m-5">
-  <h1>This the creation of a new album</h1>
-  <p>find me in app/views/albums/new.html.erb</p>
+<div class="new-edit-album-container">
+  <div class="new-edit-album-header">
+    <div class="new-edit-album-header-box">
+      <h3>You are <span class="underline-yellow">posting ...</span></h3>
+    </div>
+    <div class="new-edit-album-header-box">
+      <%= link_to dashboard_artist_path(@artist) do %>
+        <h6><span class="underline-red">Stop</span> posting</h6>
+      <% end %>
+    </div>
+  </div>
 
-  <div class="m-3">
+  <div class="new-edit-album-form">
+    <h3 class="writting-yellow">Album</h3>
     <%= simple_form_for [@artist, @album] do |f| %>
       <%= f.input :name %>
       <%= f.input :meaning %>
@@ -16,7 +25,7 @@
           <button data-action="click->album#add_music" type="button" class="btn btn-primary">Add a music</button>
         </div>
       </div>
-      <%= f.submit %>
+      <%= f.submit "Post", class: "yellow-submit-btn" %>
     <% end %>
   </div>
 </div>
