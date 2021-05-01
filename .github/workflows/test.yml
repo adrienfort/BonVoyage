@@ -33,6 +33,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1 # short for https://github.com/ruby/setup-ruby
         with:
+          bundler: "2.1.4"
           bundler-cache: true
       - name: Set up Node
         uses: actions/setup-node@v2
