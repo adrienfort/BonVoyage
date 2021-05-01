@@ -4,4 +4,46 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+
+  @media(max-width: 650px) {
+    height: 2.5em;
+  }
+}
+
+.album-avatar-lg {
+  width: 10em;
+  height: 10em;
+  border-radius: $border-radius-sm;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    width: 6em;
+    height: 6em;
+  }
+}
+
+.album-avatar-sm {
+  width: 2em;
+  height: 2em;
+  border-radius: $border-radius-sm-2;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.music-yellow-storm {
+  height: 2em;
+  width: 2em;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    height: 1em;
+    width: 1em;
+  }
 }

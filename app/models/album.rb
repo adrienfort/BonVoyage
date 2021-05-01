@@ -11,6 +11,7 @@ class Album < ApplicationRecord
   has_one_attached :photo
 
   has_many :musics, dependent: :destroy
+  has_many :plays, through: :musics
   accepts_nested_attributes_for :musics
   has_many :fan_albums, dependent: :destroy
   has_many :explorers, through: :fan_albums

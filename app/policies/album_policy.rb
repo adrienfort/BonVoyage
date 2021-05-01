@@ -5,6 +5,10 @@ class AlbumPolicy < ApplicationPolicy
     end
   end
 
+  def show_artist?
+    true
+  end
+
   def new?
     true
   end

@@ -23,7 +23,11 @@
     </div>
     <div id="main-navbar-username">
       <p><%= @artist.name %></p>
-      <%= cl_image_tag @artist.photo.key, class: "navbar-avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if @artist.photo.attached? %>
+        <%= cl_image_tag @artist.photo.key, class: "navbar-avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <img class="navbar-avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="">
+      <% end %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <%= link_to "Edit account", edit_artist_registration_path(@artist), class: "dropdown-item" %>
         <%= link_to "Log out", destroy_artist_session_path, method: :delete,

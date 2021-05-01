@@ -1,0 +1,21 @@
+<div class="album-header-container">
+  <div class="album-header-info">
+    <% if @album.photo.attached? %>
+      <%= cl_image_tag @album.photo.key, class: "album-avatar-lg" %>
+    <% else %>
+      <img class="album-avatar-lg" src="">
+    <% end %>
+    <div class="album-header-info-box">
+      <div class="album-header-info-box-1">
+        <h4><%= @album.name %></h4>
+        <h6><%= @album.fan_albums.count %> fans - <%= @album.plays.count %> plays</h6>
+      </div>
+      <div class="album-header-info-box-2">
+        <p><%= @album.musics.count %> songs - <%= @album.created_at.to_formatted_s(:long_ordinal)   %></p>
+      </div>
+    </div>
+  </div>
+  <div class="album-header-meaning">
+    <p><%= @album.meaning %></p>
+  </div>
+</div>

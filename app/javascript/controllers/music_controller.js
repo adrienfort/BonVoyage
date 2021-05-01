@@ -4,6 +4,10 @@ import { fetchWithToken } from "../utils/fetch_with_token";
 export default class extends Controller {
   // static targets = [ 'music_player' ];
 
+  connect() {
+    console.log("fdffdedfd")
+  }
+
   play_music(event) {
     const music = event.target.dataset.music_id
     fetchWithToken(`/musics/${music}/plays`, {

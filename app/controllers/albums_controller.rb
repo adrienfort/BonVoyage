@@ -1,16 +1,17 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_artist!, only: [:new, :create]
-  before_action :get_artist, only: [:new, :create, :edit, :update]
-  before_action :get_and_authorize_album, only: [:edit, :update, :destroy]
+  before_action :authenticate_artist!, only: [:new, :create, :show_artist]
+  before_action :authenticate_explorer!, only: [:show_explorer]
+  before_action :get_artist, only: [:new, :create, :edit, :update, :show_artist]
+  before_action :get_and_authorize_album, only: [:edit, :update, :destroy, :show_artist]
 
   def pundit_user
     current_artist
   end
 
-  def show
-    @artist = Artist.find(params[:artist_id])
-    @explorer = current_explorer
-    @album = Album.find(params[:id])
+  def show_explorer
+  end
+
+  def show_artist
   end
 
   def new

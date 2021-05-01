@@ -1,0 +1,61 @@
+.music-player {
+  min-width: 40%;
+  height: 80%;
+  background-color: $gray;
+}
+
+.music-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 40px;
+  max-width: 700px;
+  background-color: $gray;
+  border-radius: $border-radius-sm-2;
+  margin-bottom: 0.2em;
+
+  h6 {
+    margin: 0px;
+  }
+}
+
+.music-card-name {
+  min-width: 160px;
+
+  @media(max-width: 650px) {
+    min-width: 60px;
+  }
+}
+
+.music-card-index {
+  width: 100px;
+
+  @media(max-width: 650px) {
+    width: 30px;
+  }
+}
+
+.music-card-photo {
+  width: 3em;
+}
+
+.music-card-plays {
+  width: 160px;
+
+  @media(max-width: 650px) {
+    min-width: 60px;
+  }
+}
+
+.music-card-fans {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 160px;
+
+  @media(max-width: 650px) {
+    width: 60px;
+  }
+}

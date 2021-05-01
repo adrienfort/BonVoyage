@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   resources :explorers, only: [] do
     resources :artists, only: [:show] do
       resources :fan_artists, only: [:create, :destroy]
-      resources :albums, only: [:show] do
+      resources :albums, only: [] do
+        member do
+          get :show_explorer
+        end
         resources :fan_albums, only: [:create, :destroy]
         resources :musics, only: [] do
           resources :fan_musics, only: [:create, :destroy]
@@ -54,7 +57,11 @@ Rails.application.routes.draw do
   end
 
   resources :artists, only: [] do
-    resources :albums, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :albums, only: [:new, :create, :edit, :update, :destroy] do
+      member do
+        get :show_artist
+      end
+    end
     member do
       get :dashboard
     end
