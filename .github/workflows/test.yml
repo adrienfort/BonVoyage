@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: "14"
       - name: Yarn install
-          run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
       - name: Prepare DB
         run: | # Pipe is important, adds line breaks
           cp config/database.github.yml config/database.yml
