@@ -23,7 +23,16 @@
     </div>
     <div id="main-navbar-username">
       <p><%= @explorer.nickname %></p>
-      <%= cl_image_tag @explorer.photo.key, class: "navbar-avatar" %>
+      <% if @explorer.photo.attached? %>
+        <%= cl_image_tag @explorer.photo.key, class: "navbar-avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <img class="navbar-avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="">
+      <% end %>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <%= link_to "Edit account", edit_explorer_registration_path(@artist), class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_explorer_session_path, method: :delete,
+            data: {confirm: "Are you sure ?"}, class: "dropdown-item" %>
+      </div>
     </div>
   </div>
 </div>

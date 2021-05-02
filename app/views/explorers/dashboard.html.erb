@@ -1,3 +1,5 @@
+<%= render 'shared/main-navbar-explorer' %>
+
 <div class = "m-5">
   <h1>This is the <%= @explorer.nickname %> dashboard</h1>
   <p>find me in app/views/explorers/dashboard.html.erb</p>
@@ -35,7 +37,7 @@
     <h3><%= pluralize(@fan_albums.count, "album") %></h3>
     <% @fan_albums.each do |fan_album| %>
       <div class="m-1">
-        <%= link_to fan_album.album.name, explorer_artist_album_path(@explorer, fan_album.album.artist, fan_album.album) %>
+        <%= link_to fan_album.album.name, show_explorer_explorer_artist_album_path(@explorer, fan_album.album.artist, fan_album.album) %>
         <%= link_to "| Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, fan_album.album.artist, fan_album.album, fan_album), method: :delete, remote: true %>
       </div>
     <% end %>
