@@ -1,0 +1,40 @@
+.new-playlist-modal-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 150px;
+}
+
+.new-playlist-modal-header-box a {
+  color: $white;
+  text-decoration: none;
+  text-shadow: none;
+  opacity: 0.9;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.new-playlist-modal-body {
+  background-color: $gray;
+  border: 1px solid $white;
+  border-radius: $border-radius-sm-2;
+}
+
+.new-playlist-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 32px;
+}
+
+.new-playlist-submit-btn {
+  border-radius: $border-radius-sm-2;
+  height: 2.5em;
+}

@@ -1,0 +1,7 @@
+<div class="new-playlist-container">
+  <%= simple_form_for [ @explorer, @playlist ] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Create", class: "green-submit-btn new-playlist-submit-btn" %>
+  <% end %>
+</div>

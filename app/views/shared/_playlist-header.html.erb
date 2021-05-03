@@ -1,0 +1,17 @@
+<div class="album-header-container">
+  <div class="album-header-info">
+    <% if @playlist.photo.attached? %>
+      <%= cl_image_tag @playlist.photo.key, class: "album-avatar-lg" %>
+    <% else %>
+      <img class="album-avatar-lg" src="">
+    <% end %>
+    <div class="album-header-info-box" style="justify-content: space-evenly;">
+      <div class="album-header-info-box-1">
+        <h4><%= @playlist.name %></h4>
+      </div>
+      <div class="album-header-info-box-2">
+        <p><%= @playlist.musics.count %> songs - <%= @playlist.updated_at.to_formatted_s(:long_ordinal)   %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ class ExplorersController < ApplicationController
     @fan_albums = @explorer.fan_albums
     @fan_musics = @explorer.fan_musics
     @playlists = @explorer.playlists
+    @playlist = Playlist.new()
   end
 
   def research

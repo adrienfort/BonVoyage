@@ -1,7 +1,11 @@
 .music-player {
-  min-width: 40%;
+  min-width: 35%;
   height: 80%;
   background-color: $gray;
+
+  @media(max-width: 650px) {
+    min-width: 40%;
+  }
 }
 
 .music-card {
@@ -19,6 +23,9 @@
   h6 {
     margin: 0px;
   }
+  @media(max-width: 650px) {
+    width: 95%;
+  }
 }
 
 .music-card-name {
@@ -33,12 +40,16 @@
   width: 100px;
 
   @media(max-width: 650px) {
-    width: 30px;
+    display: none;
   }
 }
 
 .music-card-photo {
   width: 3em;
+
+  @media(max-width: 650px) {
+    margin-left: 5px;
+  }
 }
 
 .music-card-plays {
@@ -58,4 +69,24 @@
   @media(max-width: 650px) {
     width: 60px;
   }
+}
+
+.music-card-more-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.circle {
+  margin: 1px 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $white;
 }
