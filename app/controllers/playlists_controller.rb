@@ -1,19 +1,24 @@
 class PlaylistsController < ApplicationController
+  before_action :authenticate_explorer!, only: [:new, :create]
+  before_action :get_explorer, only: [:show, :new, :create]
+  before_action :get_and_authorize_playlist, only: [:show]
+
+  def pundit_user
+    current_explorer
+  end
 
   def show
-    @explorer = current_explorer
-    @playlist = Playlist.find(params[:id])
     @playlist_musics = @playlist.playlist_musics
   end
 
   def new
-    @explorer = current_explorer
     @playlist = Playlist.new()
+    authorize @playlist
   end
 
   def create
-    @explorer = current_explorer
     @playlist = Playlist.new(playlist_params)
+    authorize @playlist
     @playlist.explorer = @explorer
     if @playlist.save
       if !@playlist.photo.attached?
@@ -52,4 +57,12 @@ class PlaylistsController < ApplicationController
     params.require(:playlist).permit(:name, :photo)
   end
 
+  def get_explorer
+    @explorer = current_explorer
+  end
+
+  def get_and_authorize_playlist
+    @playlist = Playlist.find(params[:id])
+    authorize @playlist
+  end
 end

@@ -56,13 +56,3 @@
 .span-yellow {
   color: $yellow;
 }
-
-.grid-album {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1em;
-
-  @media(max-width: 650px) {
-    grid-template-columns: 1fr;
-  }
-}

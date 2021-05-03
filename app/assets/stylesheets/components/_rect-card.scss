@@ -1,4 +1,14 @@
-.artist-album-card {
+.rect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+
+  @media(max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rect-card {
   position: relative;
   display: flex;
   justify-content: center;
@@ -12,10 +22,21 @@
     width: 10em;
     height: 10em;
   }
+  h6 {
+    margin: 0px;
+  }
 }
 
-.album-card-update-btn {
+.rect-card-main-btn {
   position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.rect-card-top-right-btn {
+  position: absolute;
+  z-index: 2;
   top: 3%;
   left: 86%;
   img {

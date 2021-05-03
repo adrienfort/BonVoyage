@@ -6,8 +6,11 @@
   }
 }
 
-.dashboard-artists-grid {
+.margin-top-4 {
   margin-top: 4em;
+}
+
+.dashboard-artists-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
@@ -15,6 +18,10 @@
   @media(max-width: 650px) {
     grid-template-columns: 1fr;
   }
+}
+
+.dashboard-albums-grid {
+  margin-top: 4em;
 }
 
 .search-btn-container {

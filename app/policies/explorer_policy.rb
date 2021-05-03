@@ -6,7 +6,7 @@ class ExplorerPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def dashboard?
@@ -14,6 +14,6 @@ class ExplorerPolicy < ApplicationPolicy
   end
 
   def research?
-    return true
+    false
   end
 end

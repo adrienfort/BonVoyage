@@ -1,14 +1,14 @@
 <div class="dashboard-navbar-container">
-  <div class="dashboard-navbar-box" id="dashboard-navbar-explore">
+  <div class="dashboard-navbar-box" id="dashboard-navbar-explore" data-explorer-target="dashboard_navbar_explore" data-action="click->explorer#dashboard_change">
     <h6>Explore</h6>
   </div>
-  <div class="dashboard-navbar-box dashboard-navbar-border" id="dashboard-navbar-artists" data-artist-target="dashboard_navbar_dashboard" data-action="click->artist#dashboard_change">
+  <div class="dashboard-navbar-box dashboard-navbar-border" id="dashboard-navbar-artists" data-explorer-target="dashboard_navbar_artists" data-action="click->explorer#dashboard_change">
     <h6>Artists</h6>
   </div>
-  <div class="dashboard-navbar-box" id="dashboard-navbar-albums" data-artist-target="dashboard_navbar_dashboard" data-action="click->artist#dashboard_change">
+  <div class="dashboard-navbar-box" id="dashboard-navbar-albums" data-explorer-target="dashboard_navbar_albums" data-action="click->explorer#dashboard_change">
     <h6>Albums</h6>
   </div>
-  <div class="dashboard-navbar-box" id="dashboard-navbar-playlists" data-artist-target="dashboard_navbar_works" data-action="click->artist#dashboard_change">
+  <div class="dashboard-navbar-box" id="dashboard-navbar-playlists" data-explorer-target="dashboard_navbar_playlists" data-action="click->explorer#dashboard_change">
     <h6>Playlists</h6>
   </div>
 </div>
