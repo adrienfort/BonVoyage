@@ -1,39 +1,41 @@
 <%= render 'shared/main-navbar-explorer' %>
 
-<div class = "m-5">
-  <h1>This is the <%= @explorer.nickname %> dashboard</h1>
-  <p>find me in app/views/explorers/dashboard.html.erb</p>
+<div class = "artist-dashboard-container" data-controller="explorer">
+  <%= render 'shared/dashboard-navbar-explorer' %>
 
-  <%= cl_image_tag @explorer.photo.key, height: 48, width: 48, crop: :fill %>
-
-  <div class="m-3">
-    <p><%= link_to "Edit profile", edit_explorer_registration_path(@explorer) %></p>
+  <div class="artist-dashboard" data-explorer-target="dashboard_explore">
+    <div class="search-btn-container">
+      <%= link_to "Search", research_explorer_path(@explorer), class: "white-btn" %>
+    </div>
   </div>
 
-  <div class="m-3">
-    <p><%= link_to "Search", research_explorer_path(@explorer) %></p>
-  </div>
-
-  <div class="m-3">
-    <% if artist_signed_in? %>
-      <%= link_to "Artist", dashboard_artist_path(current_artist.id) %>
-    <% else %>
-      <%= link_to "Artist", new_artist_session_path %>
-    <% end %>
-    <%= link_to "Destroy session", destroy_explorer_session_path, method: :delete, data: {confirm: "Are you sure ?"} %>
-  </div>
-
-  <div class="m-3">
+  <div class="artist-dashboard h3-absolute" data-explorer-target="dashboard_artists">
     <h3><%= pluralize(@fan_artists.count, "artist") %></h3>
-    <% @fan_artists.each do |fan_artist| %>
-      <div class="m-1">
-        <%= link_to fan_artist.artist.name, explorer_artist_path(@explorer, fan_artist.artist) %>
-        <%= link_to "| Destroy coup de foudre", explorer_artist_fan_artist_path(@explorer, fan_artist.artist, fan_artist), method: :delete, remote: true %>
-      </div>
-    <% end %>
+    <div class="dashboard-artists-grid">
+      <% @fan_artists.each do |fan_artist| %>
+        <div class="artist-card">
+          <div class="artist-card-photo">
+            <%= cl_image_tag fan_artist.artist.photo.key, class: "artist-avatar-sm" %>
+          </div>
+          <div class="artist-card-infos">
+            <div class="artist-card-infos-left">
+              <h6><%= fan_artist.artist.name %></h6>
+              <p><%= pluralize(fan_artist.artist.fan_artists.count, "fan") %></p>
+            </div>
+            <div class="artist-card-infos-right">
+              <%= link_to explorer_artist_fan_artist_path(@explorer, fan_artist.artist, fan_artist), method: :delete, remote: true do %>
+                <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png"%>
+              <% end %>
+              <p><%= pluralize(fan_artist.artist.albums.count, "album") %></p>
+            </div>
+          </div>
+          <%= link_to "", explorer_artist_path(@explorer, fan_artist.artist), class: "artist-card-btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="m-3">
+  <div class="artist-dashboard" data-explorer-target="dashboard_albums">
     <h3><%= pluralize(@fan_albums.count, "album") %></h3>
     <% @fan_albums.each do |fan_album| %>
       <div class="m-1">
@@ -43,7 +45,7 @@
     <% end %>
   </div>
 
-  <div class="m-3">
+  <div class="artist-dashboard" data-explorer-target="dashboard_playlists">
     <h3><%= pluralize(@playlists.count, "playlist") %></h3>
     <% @playlists.each do |playlist| %>
       <div class="m-1">
@@ -56,7 +58,7 @@
     <%= link_to "Create a new playlist", new_explorer_playlist_path(@explorer) %>
   </div>
 
-  <div class="m-3">
+  <div class="artist-dashboard">
     <h3><%= pluralize(@fan_musics.count, "coup") %> de foudre</h3>
     <% @fan_musics.each do |fan_music| %>
       <div class="m-1">

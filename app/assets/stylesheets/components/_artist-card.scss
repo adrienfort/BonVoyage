@@ -1,0 +1,56 @@
+.artist-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 18em;
+  border: 1px solid $white;
+  border-radius: $border-radius-sm-2;
+  height: 5em;
+
+  h6 {
+    margin-bottom: 0px;
+  }
+
+  @media(max-width: 650px) {
+    height: 4em;
+  }
+}
+
+.artist-card-btn {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.artist-card-photo {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.artist-card-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+}
+
+.artist-card-infos-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: inherit;
+}
+
+.artist-card-infos-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: inherit;
+  img {
+    height: 1.3em;
+    width: 1.3em;
+  }
+}

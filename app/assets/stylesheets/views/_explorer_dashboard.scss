@@ -1,0 +1,52 @@
+.h3-absolute {
+  h3 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.dashboard-artists-grid {
+  margin-top: 4em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+
+  @media(max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.search-btn-container {
+  border: 1px solid $white;
+  width: 64%;
+  height: 80px;
+  border-radius: $border-radius-sm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  transition: all 0.3s ease-out;
+  &:hover {
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    transform: scale(1.1);
+  }
+
+  @media(max-width: 650px) {
+    height: 56px;
+  }
+}
+
+.white-btn {
+  color: white;
+  opacity: 0.9;
+  transition: all 0.3s ease-out;
+  &:hover {
+    opacity: 1;
+    color: $white;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    transform: scale(1.1);
+  }
+}

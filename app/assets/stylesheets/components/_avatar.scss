@@ -11,6 +11,19 @@
   }
 }
 
+.artist-avatar-sm {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    height: 3em;
+    width: 3em;
+  }
+}
+
 .album-avatar-lg {
   width: 10em;
   height: 10em;

@@ -24,11 +24,22 @@
 #dashboard-navbar-post a {
   color: $yellow;
   opacity: 0.9;
-
+  transition: all 0.3s ease-out;
   &:hover {
     opacity: 1;
     text-decoration: none;
-
+    transition: all 0.3s ease-out;
     transform: scale(1.01);
+  }
+}
+
+#dashboard-navbar-explore {
+  color: $green;
+  opacity: 0.9;
+  transition: all 0.3s ease-out;
+  &:hover {
+    opacity: 1;
+    transform: scale(1.01);
+    transition: all 0.3s ease-out;
   }
 }
