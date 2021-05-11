@@ -9,11 +9,12 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist_musics = @playlist.playlist_musics
+    # @playlist_music = PlaylistMusic.new()
   end
 
   def new
-    @playlist = Playlist.new()
-    authorize @playlist
+    # @playlist = Playlist.new()
+    # authorize @playlist
   end
 
   def create

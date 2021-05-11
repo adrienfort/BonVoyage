@@ -1,7 +1,13 @@
 class PlaysController < ApplicationController
+  before_action :authenticate_explorer!, only: [:create]
+
+  def pundit_user
+    current_explorer
+  end
 
   def create
     listen = Play.new(play_params)
+    authorize listen
 
     if listen.save
       render json: { success: true }

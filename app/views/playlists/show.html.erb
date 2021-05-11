@@ -8,10 +8,6 @@
     <% @playlist_musics.each_with_index do |playlist_music, index| %>
       <% @music = playlist_music.music %>
       <div class="music-card">
-        <!-- <video data-music_id="<%= playlist_music.music.id %>"
-          data-action="ended->music#play_music" height="30" width="300" id="music-<%= index %>" controls="controls"
-          src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= playlist_music.music.audio_file.key %>"></video> -->
-        <%#= link_to "| Remove from #{@playlist.name}", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), method: :delete, remote: true %>
         <div class="music-card-index">
           <h6><%= index + 1 %></h6>
         </div>
@@ -43,7 +39,8 @@
           <p><%= @music.album.artist.name %></p>
         </div>
         <% if @music.audio_file.attached? %>
-          <video id="music-<%= index %>" controls="controls"
+          <video id="music-<%= index %>" data-music_id="<%= @music.id %>" controls="controls"
+            data-action="ended->music#play_music"
             src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= @music.audio_file.key %>"
             class="music-player"></video>
         <% else %>
@@ -55,7 +52,7 @@
           <div class="circle"></div>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreOptionsDropdown">
-          <%= link_to "Add to a playlist", new_explorer_music_playlist_music_path(@explorer, @music), class: "dropdown-item" %>
+          <%= link_to "Add to a playlist", new_explorer_music_playlist_music_path(@explorer, @music), class: "dropdown-item", remote: true %>
           <%= link_to "See Album 👀", show_explorer_explorer_artist_album_path(@explorer, @music.album.artist, @music.album), class: "dropdown-item" %>
           <%= link_to "See Artist 👀", explorer_artist_path(@explorer, @music.album.artist), class: "dropdown-item" %>
         </div>
