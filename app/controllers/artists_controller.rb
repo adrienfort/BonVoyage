@@ -1,6 +1,7 @@
 class ArtistsController < ApplicationController
-  before_action :authenticate_artist!
-  before_action :get_and_authorize_artist, only: [:dashboard, :show]
+  before_action :authenticate_artist!, only: [:dashboard]
+  before_action :get_and_authorize_artist, only: [:dashboard]
+  before_action :authenticate_explorer!, only: [:show]
 
   def pundit_user
     current_artist
@@ -14,12 +15,14 @@ class ArtistsController < ApplicationController
 
   def show
     @explorer = current_explorer
+    @artist = Artist.find(params[:id])
+    authorize @artist
   end
 
   private
 
   def get_and_authorize_artist
-    @artist = Artist.find(params[:id])
+    @artist = current_artist
     authorize @artist
   end
 

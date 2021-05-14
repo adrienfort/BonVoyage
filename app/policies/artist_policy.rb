@@ -12,4 +12,8 @@ class ArtistPolicy < ApplicationPolicy
   def dashboard?
     @record.id == @user.id
   end
+
+  def show?
+    true
+  end
 end

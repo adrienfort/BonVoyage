@@ -1,62 +1,105 @@
-<div class="m-5">
-  <h1>This the <%= @artist.name %> show</h1>
-  <p>Find me in app/views/artists/show.html.erb</p>
+<%= render 'shared/main-navbar-explorer' %>
 
-  <%= cl_image_tag @artist.photo.key, height: 100, width: 100, crop: :fill %>
-
-  <div class="m-3">
-    <h4><%= pluralize(@artist.plays.count, "play") %></h4>
-    <h4><%= pluralize(@artist.fan_artists.count, "fan") %></h4>
-    <h4><%= pluralize(@artist.duration, "seconds") %></h4>
-  </div>
-
-  <div class="m-3">
-    <% fan_artist = @explorer.fan_artists.find_by(artist_id: @artist.id) %>
-    <% if fan_artist != nil %>
-      <%= link_to "Destroy coup de foudre", explorer_artist_fan_artist_path(@explorer, @artist, fan_artist), method: :delete, remote: true %>
-    <% else %>
-      <%= link_to "Coup de foudre", explorer_artist_fan_artists_path(@explorer, @artist), method: :post, remote: true %>
-    <% end %>
-  </div>
-
-  <div class="m-3">
-    <h4>Popular songs</h4>
-    <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each do |music| %>
-      <div class="m-1">
-        <%= music.name %>
-        <%= cl_video_tag music.audio_file.key, source_types: [:mp3], controls: true, height: 30, width: 300 %>
-        <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
-        <% if fan_music != nil %>
-          <%= link_to "Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, @artist, music.album, music, fan_music), method: :delete, remote: true %>
+<div class="show-album-container" data-controller="artist">
+  <%= render 'shared/artist-header' %>
+  <%= render 'shared/artist-show-navbar' %>
+  <div class="artist-dashboard w-100" data-artist-target="artist_show_musics" data-controller="music">
+    <% @artist.musics.sort_by(&:nb_plays).reverse.first(10).each_with_index do |music, index| %>
+      <% @music = music %>
+      <div class="music-card">
+        <div class="music-card-index">
+          <h6><%= index + 1 %></h6>
+        </div>
+        <div class="music-card-photo">
+          <% if @music.album.photo.attached? %>
+            <%= cl_image_tag @music.album.photo.key, class: "album-avatar-sm" %>
+          <% else %>
+            <img class="album-avatar-sm" src="">
+          <% end %>
+        </div>
+        <div class="music-card-fans">
+          <% fan_music = @explorer.fan_musics.find_by(music_id: @music.id) %>
+          <% if fan_music.nil? %>
+            <%= link_to explorer_artist_album_music_fan_musics_path(@explorer, @music.album.artist, @music.album, @music),
+                method: :post, remote: true do %>
+              <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "music-yellow-storm" %>
+            <% end %>
+          <% else %>
+            <%= link_to explorer_artist_album_music_fan_music_path(@explorer, @music.album.artist,
+                @music.album, @music, fan_music), method: :delete, remote: true do %>
+              <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="music-card-name">
+          <h6><%= @music.name %></h6>
+        </div>
+        <div class="music-card-plays">
+          <p><%= @music.album.artist.name %></p>
+        </div>
+        <% if @music.audio_file.attached? %>
+          <video id="music-<%= index %>" data-music_id="<%= @music.id %>" controls="controls"
+            data-action="ended->music#play_music"
+            src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= @music.audio_file.key %>"
+            class="music-player"></video>
         <% else %>
-          <%= link_to "Coup de foudre", explorer_artist_album_music_fan_musics_path(@explorer, @artist, music.album, music), method: :post, remote: true %>
+          <video id="music-<%= index %>" controls="controls" src="" class="music-player"></video>
         <% end %>
+        <div class="music-card-more-options dropdown-toggle" id="moreOptionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreOptionsDropdown">
+          <%= link_to "Add to a playlist", new_explorer_music_playlist_music_path(@explorer, @music), class: "dropdown-item", remote: true %>
+          <%= link_to "See Album 👀", show_explorer_explorer_artist_album_path(@explorer, @music.album.artist, @music.album), class: "dropdown-item" %>
+          <%= link_to "See Artist 👀", explorer_artist_path(@explorer, @music.album.artist), class: "dropdown-item" %>
+        </div>
       </div>
     <% end %>
   </div>
 
-  <div class="m-3">
-    <h4>Most popular Album</h4>
-    <% album = @artist.albums.sort_by(&:nb_plays).reverse.first %>
-    <%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %>
-    <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
-    <% if fan_album != nil %>
-      <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true %>
-    <% else %>
-      <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true %>
-    <% end %>
+  <div class="artist-dashboard display-none h3-absolute" data-artist-target="artist_show_albums">
+    <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
+    <div class="rect-grid margin-top-4">
+      <% @artist.albums.each do |album| %>
+        <div class="rect-card">
+          <h6><%= album.name %></h6>
+          <div class="rect-card-top-right-btn">
+            <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
+            <% if fan_album != nil %>
+              <%= link_to explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true do %>
+                <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+              <% end %>
+            <% else %>
+              <%= link_to explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true do %>
+                <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "music-yellow-storm" %>
+              <% end %>
+            <% end %>
+          </div>
+          <%= link_to "", show_explorer_explorer_artist_album_path(@explorer, @artist, album), class: "rect-card-main-btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="m-3">
-    <h3><%= pluralize(@artist.albums.count, "Album") %></h3>
-    <% @artist.albums.each do |album| %>
-      <%= link_to album.name, explorer_artist_album_path(@explorer, @artist, album) %>
-      <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
-      <% if fan_album != nil %>
-        <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true %>
-      <% else %>
-        <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true %>
-      <% end %>
-      <% end %>
+  <div class="artist-dashboard display-none w-100" data-artist-target="artist_show_album">
+    <% album = @artist.albums.sort_by(&:nb_plays).reverse.first %>
+    <div class="rect-card margin-top-4">
+      <h6><%= album.name %></h6>
+      <div class="rect-card-top-right-btn">
+        <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
+        <% if fan_album != nil %>
+          <%= link_to explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true do %>
+            <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+          <% end %>
+        <% else %>
+          <%= link_to explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true do %>
+            <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "music-yellow-storm" %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to "", show_explorer_explorer_artist_album_path(@explorer, @artist, album), class: "rect-card-main-btn" %>
+    </div>
   </div>
 </div>

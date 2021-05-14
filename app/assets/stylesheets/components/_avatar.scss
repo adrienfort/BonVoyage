@@ -1,3 +1,16 @@
+.storm-lg {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    height: 4em;
+    width: 4em;
+  }
+}
+
 .navbar-avatar {
   width: 3em;
   height: 3em;
@@ -21,6 +34,19 @@
   @media(max-width: 650px) {
     height: 3em;
     width: 3em;
+  }
+}
+
+.artist-avatar-lg {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+  @media(max-width: 650px) {
+    height: 6em;
+    width: 6em;
   }
 }
 

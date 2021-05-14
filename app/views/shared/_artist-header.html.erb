@@ -1,0 +1,30 @@
+<div class="artist-header-container">
+  <div class="storm-like">
+    <% fan_artist = @explorer.fan_artists.find_by(artist_id: @artist.id) %>
+    <% if fan_artist != nil %>
+      <%= link_to explorer_artist_fan_artist_path(@explorer, @artist, fan_artist), method: :delete, remote: true do %>
+        <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "storm-lg" %>
+      <% end %>
+    <% else %>
+      <%= link_to explorer_artist_fan_artists_path(@explorer, @artist), method: :post, remote: true do %>
+        <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "storm-lg" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="album-header-info">
+    <% if @artist.photo.attached? %>
+      <%= cl_image_tag @artist.photo.key, class: "artist-avatar-lg" %>
+    <% else %>
+      <img class="album-avatar-lg" src="">
+    <% end %>
+    <div class="album-header-info-box">
+      <div class="album-header-info-box-1">
+        <h4><%= @artist.name %></h4>
+        <h6><%= @artist.fan_artists.count %> fans - <%= @artist.plays.count %> plays</h6>
+      </div>
+      <div class="album-header-info-box-2">
+        <p><%= @artist.musics.count %> songs - <%= @artist.created_at.to_formatted_s(:long_ordinal)   %></p>
+      </div>
+    </div>
+  </div>
+</div>
