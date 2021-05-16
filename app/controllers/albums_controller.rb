@@ -2,7 +2,8 @@ class AlbumsController < ApplicationController
   before_action :authenticate_artist!, only: [:new, :create, :show_artist]
   before_action :authenticate_explorer!, only: [:show_explorer]
   before_action :get_artist, only: [:new, :create, :edit, :update, :show_artist]
-  before_action :get_and_authorize_album, only: [:edit, :update, :destroy, :show_artist]
+  before_action :get_explorer, only: [:show_explorer]
+  before_action :get_and_authorize_album, only: [:edit, :update, :destroy, :show_artist, :show_explorer]
 
   def pundit_user
     current_artist
@@ -72,6 +73,10 @@ class AlbumsController < ApplicationController
 
   def get_artist
     @artist = current_artist
+  end
+
+  def get_explorer
+    @explorer = current_explorer
   end
 
   def get_and_authorize_album

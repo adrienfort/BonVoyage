@@ -6,6 +6,10 @@ class AlbumPolicy < ApplicationPolicy
   end
 
   def show_artist?
+    record.artist_id == user.id
+  end
+
+  def show_explorer?
     true
   end
 

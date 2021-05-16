@@ -1,41 +1,61 @@
-<div class="m-5">
-  <h1>This is the <%= @album.name %> show</h1>
-  <p>find me in app/views/albums/show.html.erb</p>
+<%= render 'shared/main-navbar-explorer' %>
 
-  <%= cl_image_tag @album.photo.key, height: 100, width: 100, crop: :fill %>
-
-  <div class="m-3">
-    <% fan_album = @explorer.fan_albums.find_by(album_id: @album.id) %>
-    <% if fan_album != nil %>
-      <%= link_to "Destroy coup de foudre", explorer_artist_album_fan_album_path(@explorer, @artist, @album, fan_album), method: :delete, remote: true %>
-    <% else %>
-      <%= link_to "Coup de foudre", explorer_artist_album_fan_albums_path(@explorer, @artist, @album), method: :post, remote: true %>
-    <% end %>
+<div class="show-album-container">
+  <div class="show-album-header">
+    <%= render 'shared/album-explorer-header' %>
   </div>
-
-  <h3>Meaning:</h3>
-  <p><%= @album.meaning %></p>
-
-  <h3>Musics:</h3>
-  <% @album.musics.each do |music| %>
-    <div class="m-1">
-      <%= music.name %>
-      <%= cl_video_tag music.audio_file.key, source_types: [:mp3], controls: true, height: 30, width: 300 %>
-      <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
-      <% if fan_music != nil %>
-        <%= link_to "| Destroy coup de foudre", explorer_artist_album_music_fan_music_path(@explorer, @artist, @album, music, fan_music), method: :delete, remote: true %>
-      <% else %>
-        <%= link_to "| Coup de foudre", explorer_artist_album_music_fan_musics_path(@explorer, @artist, @album, music), method: :post, remote: true %>
-      <% end %>
-      <%= link_to "| Add to a playlist", new_explorer_music_playlist_music_path(@explorer, music) %>
-    </div>
-  <% end %>
-
-  <div class="m-3">
-    <% if @artist == current_artist %>
-      <%= link_to "Go to my dashboard", dashboard_artist_path(@artist) %>
-    <% else %>
-      <%= link_to "See artist's profile", explorer_artist_path(current_explorer, @artist) %>
+  <div class="show-album-musics">
+    <% @album.musics.each_with_index do |music, index| %>
+      <div class="music-card">
+        <div class="music-card-index">
+          <h6><%= index + 1 %></h6>
+        </div>
+        <div class="music-card-photo">
+          <% if music.album.photo.attached? %>
+            <%= cl_image_tag music.album.photo.key, class: "album-avatar-sm" %>
+          <% else %>
+            <img class="album-avatar-sm" src="">
+          <% end %>
+        </div>
+        <div class="music-card-fans">
+          <% fan_music = @explorer.fan_musics.find_by(music_id: music.id) %>
+          <% if fan_music.nil? %>
+            <%= link_to explorer_artist_album_music_fan_musics_path(@explorer, music.album.artist, music.album, music),
+                method: :post, remote: true do %>
+              <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "music-yellow-storm" %>
+            <% end %>
+          <% else %>
+            <%= link_to explorer_artist_album_music_fan_music_path(@explorer, music.album.artist,
+                music.album, music, fan_music), method: :delete, remote: true do %>
+              <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="music-card-name">
+          <h6><%= music.name %></h6>
+        </div>
+        <div class="music-card-plays">
+          <p><%= music.album.artist.name %></p>
+        </div>
+        <% if music.audio_file.attached? %>
+          <video id="music-<%= index %>" data-music_id="<%= music.id %>" controls="controls"
+            data-action="ended->music#play_music"
+            src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= music.audio_file.key %>"
+            class="music-player"></video>
+        <% else %>
+          <video id="music-<%= index %>" controls="controls" src="" class="music-player"></video>
+        <% end %>
+        <div class="music-card-more-options dropdown-toggle" id="moreOptionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreOptionsDropdown">
+          <%= link_to "Add to a playlist", new_explorer_music_playlist_music_path(@explorer, music), class: "dropdown-item", remote: true %>
+          <%= link_to "See Album 👀", show_explorer_explorer_artist_album_path(@explorer, music.album.artist, music.album), class: "dropdown-item" %>
+          <%= link_to "See Artist 👀", explorer_artist_path(@explorer, music.album.artist), class: "dropdown-item" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
