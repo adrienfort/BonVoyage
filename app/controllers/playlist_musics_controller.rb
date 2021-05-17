@@ -29,9 +29,10 @@ class PlaylistMusicsController < ApplicationController
     @explorer = current_explorer
     @playlist = Playlist.find(params[:playlist_id])
     @playlist_music = PlaylistMusic.find(params[:id])
+    authorize @playlist_music
 
     @playlist_music.destroy
-    redirect_to explorer_playlist_path(@explorer, @playlist)
+    redirect_back(fallback_location: explorer_playlist_path(@explorer, @playlist))
   end
 
 end

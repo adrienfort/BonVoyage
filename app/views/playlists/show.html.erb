@@ -55,6 +55,7 @@
           <%= link_to "Add to a playlist", new_explorer_music_playlist_music_path(@explorer, @music), class: "dropdown-item", remote: true %>
           <%= link_to "See Album 👀", show_explorer_explorer_artist_album_path(@explorer, @music.album.artist, @music.album), class: "dropdown-item" %>
           <%= link_to "See Artist 👀", explorer_artist_path(@explorer, @music.album.artist), class: "dropdown-item" %>
+          <%= link_to "Remove from playlist", explorer_playlist_playlist_music_path(@explorer, @playlist, playlist_music), class: "dropdown-item", method: :delete, remote: true %>
         </div>
       </div>
     <% end %>
