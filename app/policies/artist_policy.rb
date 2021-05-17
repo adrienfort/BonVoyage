@@ -6,7 +6,7 @@ class ArtistPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def dashboard?

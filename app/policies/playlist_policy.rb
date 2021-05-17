@@ -10,10 +10,10 @@ class PlaylistPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.explorer_id == user.id
   end
 
   def show?
-    record.explorer.id === user.id
+    record.explorer.id == user.id
   end
 end

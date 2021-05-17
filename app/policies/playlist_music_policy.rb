@@ -13,7 +13,7 @@ class PlaylistMusicPolicy < ApplicationPolicy
     record.playlist.explorer.id == user.id
   end
 
-  def destroy
-    raise
+  def destroy?
+    record.playlist.explorer.id == user.id
   end
 end

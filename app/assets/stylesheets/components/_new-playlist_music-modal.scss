@@ -11,3 +11,11 @@
     width: 100%;
   }
 }
+
+#new-playlist-modal {
+  position: absolute;
+  background: transparent;
+  min-width: 100%;
+  padding: 0px;
+  z-index: 1041;
+}

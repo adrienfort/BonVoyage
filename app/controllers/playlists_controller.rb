@@ -19,8 +19,8 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    authorize @playlist
     @playlist.explorer = @explorer
+    authorize @playlist
     if @playlist.save
       if !@playlist.photo.attached?
         file = open("#{Rails.root.to_s}/app/assets/images/default-playlist-picture.jpg")

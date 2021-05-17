@@ -6,7 +6,7 @@ class FanArtistPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.explorer_id == user.id
   end
 
   def destroy?
