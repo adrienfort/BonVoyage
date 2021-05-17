@@ -16,6 +16,7 @@ class ArtistsController < ApplicationController
   def show
     @explorer = current_explorer
     @artist = Artist.find(params[:id])
+    @musics = @artist.musics.sort_by(&:nb_plays).reverse.first(10)
     authorize @artist
   end
 

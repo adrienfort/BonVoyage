@@ -33,12 +33,6 @@ Rails.application.routes.draw do
         end
       end
     end
-    # resources :musics, only: [] do
-    #   resources :fan_musics, only: [:create, :destroy]
-    # end
-    # resources :albums, only: [:show] do
-    #   resources :fan_albums, only: [:create, :destroy]
-    # end
     resources :musics, only: [] do
       resources :playlist_musics, only: [:new, :create]
       resources :plays, only: [:create]
@@ -49,6 +43,7 @@ Rails.application.routes.draw do
     member do
       get :dashboard
       get :research
+      get :rakings
     end
   end
 

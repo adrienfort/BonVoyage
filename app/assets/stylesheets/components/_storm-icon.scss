@@ -1,0 +1,31 @@
+.storm-lg {
+  width: 100px;
+  height: 100px;
+
+  @media(max-width: 650px) {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.storm-sm {
+  width: 30px;
+  height: 30px;
+
+  @media(max-width: 650px) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.storm-g {
+  transform: translate(50px, 50px) scale(-2, 2) rotate(15deg) translate(-50px, -50px);
+}
+
+.fill-white {
+  fill: $white;
+}
+
+.fill-yellow {
+  fill: $yellow;
+}

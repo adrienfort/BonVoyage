@@ -14,6 +14,10 @@ class ExplorerPolicy < ApplicationPolicy
   end
 
   def research?
-    false
+    true
+  end
+
+  def rakings?
+    true
   end
 end

@@ -7,6 +7,9 @@
     <div class="search-btn-container">
       <%= link_to "Search", research_explorer_path(@explorer), class: "white-btn" %>
     </div>
+    <div class="search-btn-container">
+      <%= link_to "Rakings", rakings_explorer_path(@explorer), class: "white-btn" %>
+    </div>
   </div>
 
   <div class="artist-dashboard h3-absolute" data-explorer-target="dashboard_artists">
@@ -24,7 +27,7 @@
             </div>
             <div class="artist-card-infos-right">
               <%= link_to explorer_artist_fan_artist_path(@explorer, fan_artist.artist, fan_artist), method: :delete, remote: true do %>
-                <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png"%>
+                <%= render 'shared/yellow-storm-sm' %>
               <% end %>
               <p><%= pluralize(fan_artist.artist.albums.count, "album") %></p>
             </div>
@@ -43,7 +46,7 @@
           <h6><%= fan_album.album.name %></h6>
           <div class="rect-card-top-right-btn">
             <%= link_to explorer_artist_album_fan_album_path(@explorer, fan_album.album.artist, fan_album.album, fan_album), method: :delete, remote: true do %>
-              <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png" %>
+              <%= render 'shared/yellow-storm-sm' %>
             <% end %>
           </div>
           <%= link_to "", show_explorer_explorer_artist_album_path(@explorer, fan_album.album.artist, fan_album.album), class: "rect-card-main-btn" %>

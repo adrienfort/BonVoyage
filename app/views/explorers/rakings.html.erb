@@ -1,0 +1,24 @@
+<div class="new-edit-album-container" data-controller="explorer">
+  <div class="new-edit-album-header">
+    <div class="new-edit-album-header-box">
+      <h4>You are <span class="underline-green">exploring ...</span></h4>
+    </div>
+    <div class="new-edit-album-header-box">
+      <%= link_to dashboard_explorer_path(@explorer) do %>
+        <h6><span class="underline-red">Stop</span> exploring</h6>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'shared/rakings-navbar' %>
+
+  <div class="artist-dashboard" data-explorer-target="rakings_artists">
+    <h3>artists</h3>
+  </div>
+  <div class="artist-dashboard display-none" data-explorer-target="rakings_albums">
+    <h3>albums</h3>
+  </div>
+  <div class="artist-dashboard display-none" data-explorer-target="rakings_musics">
+    <h3>musics</h3>
+  </div>
+</div>

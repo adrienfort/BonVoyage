@@ -9,7 +9,13 @@ export default class extends Controller {
     'dashboard_explore',
     'dashboard_artists',
     'dashboard_albums',
-    'dashboard_playlists'
+    'dashboard_playlists',
+    'rakings_navbar_artists',
+    'rakings_navbar_albums',
+    'rakings_navbar_musics',
+    'rakings_artists',
+    'rakings_albums',
+    'rakings_musics'
   ];
 
   dashboard_change(event) {
@@ -41,6 +47,28 @@ export default class extends Controller {
       this.dashboard_playlistsTarget.classList.remove("display-none")
       document.querySelector(".dashboard-navbar-border").classList.remove("dashboard-navbar-border")
       this.dashboard_navbar_playlistsTarget.classList.add("dashboard-navbar-border")
+    }
+  }
+
+  rakings_change(event) {
+    if (event.currentTarget.id === "rakings-navbar-artists") {
+      document.querySelector(".dashboard-navbar-border").classList.remove("dashboard-navbar-border")
+      this.rakings_navbar_artistsTarget.classList.add("dashboard-navbar-border")
+      this.rakings_artistsTarget.classList.remove("display-none")
+      this.rakings_albumsTarget.classList.add("display-none")
+      this.rakings_musicsTarget.classList.add("display-none")
+    } else if (event.currentTarget.id === "rakings-navbar-albums") {
+      document.querySelector(".dashboard-navbar-border").classList.remove("dashboard-navbar-border")
+      this.rakings_navbar_albumsTarget.classList.add("dashboard-navbar-border")
+      this.rakings_artistsTarget.classList.add("display-none")
+      this.rakings_albumsTarget.classList.remove("display-none")
+      this.rakings_musicsTarget.classList.add("display-none")
+    } else if (event.currentTarget.id === "rakings-navbar-musics") {
+      document.querySelector(".dashboard-navbar-border").classList.remove("dashboard-navbar-border")
+      this.rakings_navbar_musicsTarget.classList.add("dashboard-navbar-border")
+      this.rakings_artistsTarget.classList.add("display-none")
+      this.rakings_albumsTarget.classList.add("display-none")
+      this.rakings_musicsTarget.classList.remove("display-none")
     }
   }
 }

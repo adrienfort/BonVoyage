@@ -39,15 +39,15 @@
 .rect-card-top-right-btn {
   position: absolute;
   z-index: 2;
-  top: 3%;
-  left: 86%;
+  top: 4%;
+  left: 84%;
   img {
     height: 1em;
     width: 1em;
   }
 
   @media(max-width: 650px) {
-    top: 0%;
-    left: 89%;
+    top: 1%;
+    left: 85%;
   }
 }

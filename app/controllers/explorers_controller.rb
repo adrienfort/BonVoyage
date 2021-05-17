@@ -1,6 +1,6 @@
 class ExplorersController < ApplicationController
   before_action :authenticate_explorer!
-  before_action :get_and_authorize_explorer, only: [:dashboard, :research]
+  before_action :get_and_authorize_explorer
 
   def pundit_user
     current_explorer
@@ -12,6 +12,12 @@ class ExplorersController < ApplicationController
     @fan_musics = @explorer.fan_musics
     @playlists = @explorer.playlists
     @playlist = Playlist.new()
+  end
+
+  def rakings
+    @artists = Artist.all.sort_by(&:nb_plays).reverse.first(30)
+    @albums = Album.all.sort_by(&:nb_plays).reverse.first(30)
+    @musics = Music.all.sort_by(&:nb_plays).reverse.first(30)
   end
 
   def research

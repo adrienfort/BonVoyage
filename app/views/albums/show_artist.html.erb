@@ -25,7 +25,7 @@
         </div>
         <div class="music-card-fans">
           <p><%= music.fan_musics.count %></p>
-          <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+          <%= render 'shared/yellow-storm-sm' %>
         </div>
         <% if music.audio_file.attached? %>
           <video id="music-<%= index %>" controls="controls"
