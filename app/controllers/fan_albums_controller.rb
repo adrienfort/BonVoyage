@@ -1,4 +1,5 @@
 class FanAlbumsController < ApplicationController
+  before_action :authenticate_explorer!
   before_action :get_explorer_and_album, only: [:create, :destroy]
 
   def pundit_user

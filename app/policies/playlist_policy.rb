@@ -10,23 +10,32 @@ class PlaylistPolicy < ApplicationPolicy
   end
 
   def create?
-    record.explorer_id == user.id
+    record.explorer_id === user.id
   end
 
   def show?
-    record.explorer.id == user.id
+    record.explorer.id === user.id
   end
 
   def edit?
-    record.explorer.id == user.id
+    if (record.name != "Bon Voyage")
+      return record.explorer.id === user.id
+    end
+    false
   end
 
   def update?
-    record.explorer.id == user.id
+    if (record.name != "Bon Voyage")
+      return record.explorer.id === user.id
+    end
+    false
   end
 
   def destroy?
-    record.explorer.id == user.id
+    if (record.name != "Bon Voyage")
+      return record.explorer.id === user.id
+    end
+    false
   end
 
 end

@@ -1,5 +1,5 @@
 class PlaysController < ApplicationController
-  before_action :authenticate_explorer!, only: [:create]
+  before_action :authenticate_explorer!
 
   def pundit_user
     current_explorer
