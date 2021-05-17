@@ -24,12 +24,12 @@
             <% if fan_music.nil? %>
               <%= link_to explorer_artist_album_music_fan_musics_path(@explorer, @music.album.artist, @music.album, @music),
                   method: :post, remote: true do %>
-                <%= image_tag "#{Rails.root.to_s}/app/assets/images/white-storm.png", class: "music-yellow-storm" %>
+                <%= render 'shared/white-storm-sm' %>
               <% end %>
             <% else %>
               <%= link_to explorer_artist_album_music_fan_music_path(@explorer, @music.album.artist,
                   @music.album, @music, fan_music), method: :delete, remote: true do %>
-                <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+                <%= render 'shared/yellow-storm-sm' %>
               <% end %>
             <% end %>
           </div>
@@ -77,7 +77,7 @@
           <div class="music-card-fans">
             <%= link_to explorer_artist_album_music_fan_music_path(@explorer, @music.album.artist,
                 @music.album, @music, fan_music), method: :delete, remote: true do %>
-              <%= cl_image_tag "https://res.cloudinary.com/dsns4xicz/image/upload/v1619343778/qmh7tyqfffmi9s4yuxnmn8vbx2b7.png", class: "music-yellow-storm" %>
+              <% render 'shared/yellow-storm-sm' %>
             <% end %>
           </div>
           <div class="music-card-name">

@@ -9,11 +9,11 @@ class PlaylistsController < ApplicationController
 
   def show
     if @playlist.name === "Bon Voyage"
-      @fan_musics = @explorer.fan_musics
+      @fan_musics = @explorer.fan_musics.sort.reverse
       @playlist_musics = nil
     else
       @fan_musics = nil
-      @playlist_musics = @playlist.playlist_musics
+      @playlist_musics = @playlist.playlist_musics.sort.reverse
     end
   end
 

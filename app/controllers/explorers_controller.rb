@@ -7,10 +7,9 @@ class ExplorersController < ApplicationController
   end
 
   def dashboard
-    @fan_artists = @explorer.fan_artists
+    @fan_artists = @explorer.fan_artists.reverse
     @fan_albums = @explorer.fan_albums
-    @fan_musics = @explorer.fan_musics
-    @playlists = @explorer.playlists
+    @playlists = @explorer.playlists.reverse
     @playlist = Playlist.new()
   end
 

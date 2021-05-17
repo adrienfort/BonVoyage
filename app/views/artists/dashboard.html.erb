@@ -9,7 +9,7 @@
       <div class="dashboard-rakings">
         <div class="dashboard-raking-box">
           <div><h3><%= @plays_pos + 1 %></h3></div>
-          <div><p>most played artist, with <span class="span-yellow"><%= pluralize(@artist.plays.count, "play") %></span></p></div>
+          <div><p>most played artist, with <span class="span-yellow"><%= pluralize(@artist.nb_plays, "play") %></span></p></div>
         </div>
         <div class="dashboard-raking-box">
           <div><h3><%= @fans_pos + 1 %></h3></div>

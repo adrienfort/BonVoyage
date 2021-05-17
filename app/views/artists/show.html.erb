@@ -85,21 +85,23 @@
 
   <div class="artist-dashboard display-none w-100" data-artist-target="artist_show_album">
     <% album = @artist.albums.sort_by(&:nb_plays).reverse.first %>
-    <div class="rect-card margin-top-4">
-      <h6><%= album.name %></h6>
-      <div class="rect-card-top-right-btn">
-        <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
-        <% if fan_album != nil %>
-          <%= link_to explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true do %>
-            <%= render 'shared/yellow-storm-sm' %>
+    <% if !album.nil? %>
+      <div class="rect-card margin-top-4">
+        <h6><%= album.name %></h6>
+        <div class="rect-card-top-right-btn">
+          <% fan_album = @explorer.fan_albums.find_by(album_id: album.id) %>
+          <% if fan_album != nil %>
+            <%= link_to explorer_artist_album_fan_album_path(@explorer, @artist, album, fan_album), method: :delete, remote: true do %>
+              <%= render 'shared/yellow-storm-sm' %>
+            <% end %>
+          <% else %>
+            <%= link_to explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true do %>
+              <%= render 'shared/white-storm-sm' %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to explorer_artist_album_fan_albums_path(@explorer, @artist, album), method: :post, remote: true do %>
-            <%= render 'shared/white-storm-sm' %>
-          <% end %>
-        <% end %>
+        </div>
+        <%= link_to "", show_explorer_explorer_artist_album_path(@explorer, @artist, album), class: "rect-card-main-btn" %>
       </div>
-      <%= link_to "", show_explorer_explorer_artist_album_path(@explorer, @artist, album), class: "rect-card-main-btn" %>
-    </div>
+    <% end %>
   </div>
 </div>

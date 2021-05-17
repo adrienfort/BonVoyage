@@ -21,7 +21,7 @@
           <h6><%= music.name %></h6>
         </div>
         <div class="music-card-plays">
-          <p><%= music.plays.count %> plays</p>
+          <p><%= pluralize(music.nb_plays, "play") %></p>
         </div>
         <div class="music-card-fans">
           <p><%= music.fan_musics.count %></p>

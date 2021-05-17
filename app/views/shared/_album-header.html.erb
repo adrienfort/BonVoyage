@@ -8,7 +8,7 @@
     <div class="album-header-info-box">
       <div class="album-header-info-box-1">
         <h4><%= @album.name %></h4>
-        <h6><%= @album.fan_albums.count %> fans - <%= @album.plays.count %> plays</h6>
+        <h6><%= pluralize(@album.fan_albums.count, "fan") %> - <%= pluralize(@album.nb_plays, "play") %></h6>
       </div>
       <div class="album-header-info-box-2">
         <p><%= @album.musics.count %> songs - <%= @album.created_at.to_formatted_s(:long_ordinal)   %></p>
