@@ -8,6 +8,7 @@ class Artist < ApplicationRecord
   before_destroy do |artist|
     artist.photo.purge
   end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

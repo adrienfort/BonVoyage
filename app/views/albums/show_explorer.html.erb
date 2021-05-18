@@ -4,7 +4,7 @@
   <div class="show-album-header">
     <%= render 'shared/album-explorer-header' %>
   </div>
-  <div class="show-album-musics">
+  <div class="show-album-musics" data-controller="music">
     <% @album.musics.each_with_index do |music, index| %>
       <div class="music-card">
         <div class="music-card-index">

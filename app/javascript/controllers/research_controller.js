@@ -4,10 +4,6 @@ const algoliasearch = require('algoliasearch');
 export default class extends Controller {
   static targets = [ 'research_params', 'select', 'results' ];
 
-  connect() {
-    console.log("Connected for reseach")
-  }
-
   search(event) {
     const appId = this.research_paramsTarget.dataset.app_id
     const appKey = this.research_paramsTarget.dataset.app_key
@@ -26,7 +22,7 @@ export default class extends Controller {
           if (toFind == "Artist") {
             html = `<a href="/explorers/${explorerId}/artists/${element.objectID}">${element.name}</a>`
           } else if (toFind == "Album") {
-            html = `artist -> ${element.name}`
+            html = `album -> ${element.name}`
             // html = `<a href="/explorers/${explorerId}/artists/${??}/albums/${element.objectID}">${element.name}</a>`
           } else {
             html = `music -> ${element.name}`

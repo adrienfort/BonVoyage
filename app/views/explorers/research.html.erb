@@ -1,15 +1,26 @@
-<div class="m-5" data-controller="research" data-research-target="research_params"
+<div class="new-edit-album-container" data-controller="research" data-research-target="research_params"
      data-app_id="<%= ENV['APP_ALGOLIA_ID'] %>" data-app_key="<%= ENV['API_ALGOLIA_KEY'] %>"
      data-explorer_id="<%= @explorer.id %>" >
-  <div class="m-2">
-    <label for="pet-select">What do you want to search ?</label>
+  <div class="new-edit-album-header">
+    <div class="new-edit-album-header-box">
+      <h4>You are <span class="underline-green">exploring ...</span></h4>
+    </div>
+    <div class="new-edit-album-header-box">
+      <%= link_to dashboard_explorer_path(@explorer) do %>
+        <h6><span class="underline-red">Stop</span> exploring</h6>
+      <% end %>
+    </div>
+  </div>
+  <div class="research-params-container">
     <select name="toSearch" data-research-target="select" data-action="change->research#search">
         <option value="Artist">Artist</option>
         <option value="Album">Album</option>
         <option value="Music">Music</option>
     </select>
+    <div class="research-input-container">
+      <input type="text" data-action="input->research#search" placeholder="...">
+      <button type="button" data-action="click->research#search">🔎</button>
+    </div>
   </div>
-  <input type="text" data-action="input->research#search">
-  <button type="button" data-action="click->research#search">Search</button>
   <div id="searchResults" class="m-4" data-research-target="results"></div>
 </div>

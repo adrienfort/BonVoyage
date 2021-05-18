@@ -1,0 +1,54 @@
+.research-params-container {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+
+  select {
+    height: 100%;
+    width: 25%;
+    background-color: $gray;
+    color: $green;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  @media(max-width: 650px) {
+    flex-direction: column;
+    select {
+      width: 100%;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.research-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  input {
+    flex-grow: 1;
+    background-color: $gray;
+    border: none;
+    height: 100%;
+    color: $white;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  button {
+    background-color: $gray;
+    border: 1px solid $green;
+    color: $green;
+    width: 80px;
+
+    @media(max-width: 650px) {
+      width: 40px;
+    }
+  }
+}
