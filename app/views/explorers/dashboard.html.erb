@@ -18,7 +18,11 @@
       <% @fan_artists.each do |fan_artist| %>
         <div class="artist-card">
           <div class="artist-card-photo">
-            <%= cl_image_tag fan_artist.artist.photo.key, class: "artist-avatar-sm" %>
+            <% if fan_artist.artist.photo.attached? %>
+              <%= cl_image_tag fan_artist.artist.photo.key, class: "artist-avatar-sm" %>
+            <% else %>
+              <img class="artist-avatar-sm" src="">
+            <% end %>
           </div>
           <div class="artist-card-infos">
             <div class="artist-card-infos-left">
