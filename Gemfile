@@ -47,6 +47,10 @@ gem 'pundit'
 gem "chartkick"
 # Usefull for charts
 gem 'groupdate'
+# # Background jobs
+# gem 'sidekiq'
+# # show failures in sidekiq admin
+# gem 'sidekiq-failures', '~> 1.0'
 
 group :development, :test do
   gem 'pry-byebug'
