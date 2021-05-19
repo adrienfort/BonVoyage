@@ -13,14 +13,14 @@
   </div>
   <div class="research-params-container">
     <select name="toSearch" data-research-target="select" data-action="change->research#search">
-        <option value="Artist">Artist</option>
-        <option value="Album">Album</option>
-        <option value="Music">Music</option>
+      <option value="Artist">Artist</option>
+      <option value="Album">Album</option>
+      <option value="Music">Music</option>
     </select>
     <div class="research-input-container">
       <input type="text" data-action="input->research#search" placeholder="...">
       <button type="button" data-action="click->research#search">🔎</button>
     </div>
   </div>
-  <div id="searchResults" class="m-4" data-research-target="results"></div>
+  <div class="rect-grid mt-5" id="searchResults" class="m-4" data-research-target="results"></div>
 </div>

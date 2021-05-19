@@ -20,14 +20,16 @@ export default class extends Controller {
           var html = ""
 
           if (toFind == "Artist") {
-            html = `<a href="/explorers/${explorerId}/artists/${element.objectID}">${element.name}</a>`
+            html = `<div class="rect-card-sm">
+                      <h6>${element.name}</h6>
+                      <a class="rect-card-main-btn" href="/explorers/${explorerId}/artists/${element.objectID}"></a>
+                    </div>`
           } else if (toFind == "Album") {
-            html = `album -> ${element.name}`
-            // html = `<a href="/explorers/${explorerId}/artists/${??}/albums/${element.objectID}">${element.name}</a>`
+            html = `<div class="rect-card-sm"><h6>${element.name}</h6></div>`
           } else {
-            html = `music -> ${element.name}`
+            html = `<div class="rect-card-sm"><h6>${element.name}</h6></div>`
           }
-          results.insertAdjacentHTML("beforeend", `<div class="m-1">${html}</div>`)
+          results.insertAdjacentHTML("beforeend", `${html}`)
         })
       })
       .catch(function searchFailure(err) {
