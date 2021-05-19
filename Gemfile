@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-gem 'dotenv-rails', groups: [:development, :test]
+# gem 'dotenv-rails', groups: [:development, :test]
 
 # Algolia for researches
 gem "algoliasearch-rails"
@@ -77,8 +77,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # Add screenshots during tests
-  gem 'launchy'
+  # # Add screenshots during tests
+  # gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
