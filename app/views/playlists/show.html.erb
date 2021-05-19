@@ -42,7 +42,7 @@
           <% if @music.audio_file.attached? %>
             <video id="music-<%= index %>" data-music_id="<%= @music.id %>" controls="controls"
               data-action="ended->music#play_music"
-              src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= @music.audio_file.key %>"
+              src="http://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/video/upload/<%= @music.audio_file.key %>"
               class="music-player"></video>
           <% else %>
             <video id="music-<%= index %>" controls="controls" src="" class="music-player"></video>
@@ -89,7 +89,7 @@
           <% if @music.audio_file.attached? %>
             <video id="music-<%= index %>" data-music_id="<%= @music.id %>" controls="controls"
               data-action="ended->music#play_music"
-              src="http://res.cloudinary.com/<%= ENV['KEY_CLOUDINARY'] %>/video/upload/<%= @music.audio_file.key %>"
+              src="http://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/video/upload/<%= @music.audio_file.key %>"
               class="music-player"></video>
           <% else %>
             <video id="music-<%= index %>" controls="controls" src="" class="music-player"></video>
