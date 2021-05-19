@@ -23,7 +23,7 @@ class ExplorersTest < ApplicationSystemTestCase
     assert_selector "h3", text: "You are editing your profile"
   end
 
-   test "visiting the explorer playlist show" do
+  test "visiting the explorer playlist show" do
     explorer = explorers(:explorer_1)
     playlist = playlists(:playlist_1_1)
 
