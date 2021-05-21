@@ -52,6 +52,11 @@ gem 'groupdate'
 # # show failures in sidekiq admin
 # gem 'sidekiq-failures', '~> 1.0'
 
+# Create fake data (for the seed)
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+# To open url
+gem 'open-uri'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
