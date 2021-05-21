@@ -8,10 +8,11 @@ export default class extends Controller {
     const appId = this.research_paramsTarget.dataset.app_id
     const appKey = this.research_paramsTarget.dataset.app_key
     const toFind = this.selectTarget.value
-    const explorerId = this.research_paramsTarget.explorer_id
+    const explorerId = this.research_paramsTarget.dataset.explorer_id
     const results = this.resultsTarget
     var client = algoliasearch(appId, appKey);
     var index = client.initIndex(toFind);
+
 
     index.search(event.target.value, { hitsPerPage: 10, page: 0 })
       .then(function searchDone(content) {
