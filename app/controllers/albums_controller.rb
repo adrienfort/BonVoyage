@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
 
   def update
     @album.update(album_params)
-    redirect_to artist_album_path(@artist, @album)
+    redirect_to dashboard_artist_path(@artist)
   end
 
   def destroy

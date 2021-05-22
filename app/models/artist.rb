@@ -2,7 +2,8 @@ class Artist < ApplicationRecord
   include AlgoliaSearch
 
   before_create do |artist|
-    file = open("#{Rails.root.to_s}/app/assets/images/default-artist-avatar.jpg")
+    # file = open("#{Rails.root.to_s}/app/assets/images/default-artist-avatar.jpg")
+    file = URI.open("https://loremflickr.com/200/200/music,artist/all")
     artist.photo.attach(io: file, filename: 'default-artist-avatar.png', content_type: 'image/jpg')
   end
   before_destroy do |artist|
