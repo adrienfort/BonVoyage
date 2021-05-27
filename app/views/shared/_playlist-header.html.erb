@@ -10,7 +10,11 @@
         <h4><%= @playlist.name %></h4>
       </div>
       <div class="album-header-info-box-2">
-        <p><%= @playlist.musics.count %> songs - <%= @playlist.updated_at.to_formatted_s(:long_ordinal)   %></p>
+        <% if @playlist.name == "Bon Voyage" %>
+          <p><%= pluralize(@explorer.fan_musics.count, "song") %> - <%= @playlist.updated_at.to_formatted_s(:long_ordinal) %></p>
+        <% else %>
+          <p><%= pluralize(@playlist.musics.count, "song") %> - <%= @playlist.updated_at.to_formatted_s(:long_ordinal) %></p>
+        <% end %>
       </div>
     </div>
   </div>
